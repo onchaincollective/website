@@ -15,6 +15,8 @@ const contractAddress =
 
 const soldOut = false; // omg!
 
+const mintPrice = 0.00000000002;
+
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
   infuraId: "cddde80366fc42c2ac9202c6a0f9850b",
@@ -683,8 +685,10 @@ function Home() {
   const [yearTotal, setYearTotal] = useState(0);
   // const [friendAddress, setFriendAddress] = useState("");
   // const [realFriendAddress, setRealFriendAddress] = useState("");
+  const [mintNumber, setMintNumber] = useState("");
   const [transactionHash, setTransactionHash] = useState(null);
   // const friendField = useRef();
+  const mintNumberField = useRef();
 
   useEffect(() => {
     if (!library) return;
@@ -702,6 +706,7 @@ function Home() {
 
     setWorking(false);
   }, [account]);
+
 
   // useEffect(() => {
   //   if (!friendAddress) return;
@@ -724,10 +729,10 @@ function Home() {
 
   function craftForSelf() {
     setWorking(true);
-    console.log();
+    console.log(mintNumber);
     contract.methods
-      .mintForSelf(1)
-      .send({ from: account, value: utils.toWei("0.015", "ether") })
+      .mintForSelf(mintNumber)
+      .send({ from: account, value: utils.toWei("0.00000000002", "ether") })
       .then((res) => {
         console.log(res);
         setWorking(false);
@@ -850,11 +855,11 @@ function Home() {
                   <div className="text-red-500 text-xs">{error.message}</div>
                 )}
 
-                <div className="text-sm space-y-2 leading-normal">
+                <div className="text-sm leading-normal">
                   <p>
                     <strong>Each flower cost you Ξ0.01 + gas fees to mint</strong>{" "}
                   </p>
-                  <p className='mb-8'>
+                  <p>
                     The flowers generated will be different depending on your wallet address
                   </p>
                   {/* <p>
@@ -862,11 +867,21 @@ function Home() {
                     will be different depending on its number and the
                     destination address.
                   </p> */}
+                  <input
+                    ref={mintNumberField}
+                    className="input text-sm rounded-2xl bg-white mt-8"
+                    value={mintNumber}
+                    onChange={(event) => {
+                      setMintNumber(event.target.value);
+                    }}
+                    disabled={working}
+                    placeholder={"Number of flowers to mint "}
+                  />
 
                   <MintButton
                     disabled={working || soldOut}
                     onClick={craftForSelf}
-                    className="p-2 justify-center mt-10"
+                    className="p-2 justify-center mt-2"
                   >
                     Mint Now
                   </MintButton>
