@@ -695,7 +695,7 @@ function Home() {
     console.log();
     contract.methods
       .craftForSelf('0x481C0121bE626ed5544249C9fE88Fef7C78e53dD')
-      .send({ from: account, value: utils.toWei("0.01", "ether") })
+      .send({ from: account, value: utils.toWei("0.02", "ether") })
       .then((res) => {
         console.log(res);
         setWorking(false);
