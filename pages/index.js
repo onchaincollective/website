@@ -732,7 +732,7 @@ function Home() {
     console.log(mintNumber);
     contract.methods
       .mintForSelf(mintNumber)
-      .send({ from: account, value: utils.toWei("0.00000000002", "ether") })
+      .send({ from: account, value: utils.toWei("0.015", "ether") })
       .then((res) => {
         console.log(res);
         setWorking(false);
