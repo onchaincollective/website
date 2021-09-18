@@ -15,7 +15,7 @@ const contractAddress =
 
 const soldOut = false; // omg!
 
-const mintPrice = 0.00000000002;
+const mintPrice = 0.015;
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
