@@ -886,10 +886,10 @@ function Home() {
                     Mint Now
                   </MintButton>
 
-                  <p className="pt-8">
+                  {/* <p className="pt-8">
                     {yearTotal}/5,000 flowers have been minted in{" "}
                     {new Date().getFullYear()}.
-                  </p>
+                  </p> */}
 
                   {/* <progress className="w-full" max={1000} value={yearTotal} /> */}
 
