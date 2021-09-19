@@ -10,8 +10,8 @@ import debounce from "debounce";
 
 const contractAddress =
   process.env.NODE_ENV === "production"
-    ? "0x7D8391074074F725CbD6df368987e948D3fc7ED6"
-    : "0x7D8391074074F725CbD6df368987e948D3fc7ED6";
+    ? "0x3b6c29425609c66474f7a7fa6b1d3630a6dbd7ed"
+    : "0x3b6c29425609c66474f7a7fa6b1d3630a6dbd7ed";
 
 const soldOut = false; // omg!
 
@@ -27,116 +27,17 @@ function getLibrary(provider) {
 }
 
 const abi = [
-	{
-		"anonymous": false,
+  {
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "approved",
-				"type": "address"
-			},
-			{
-				"indexed": true,
 				"internalType": "uint256",
-				"name": "tokenId",
+				"name": "amountOfTokens",
 				"type": "uint256"
 			}
 		],
-		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "approve",
+		"name": "mintForSelf",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -158,350 +59,6 @@ const abi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amountOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "mintForSelf",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "_data",
-				"type": "bytes"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "setApprovalForAll",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newMaxMint",
-				"type": "uint256"
-			}
-		],
-		"name": "setMaxMint",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newMaxSupply",
-				"type": "uint256"
-			}
-		],
-		"name": "setMaxSupply",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newPrice",
-				"type": "uint256"
-			}
-		],
-		"name": "setPrice",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawAll",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "seed",
-				"type": "string"
-			}
-		],
-		"name": "getAColor",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "getApproved",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "getCoreSize",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "mainColor",
-				"type": "string"
-			}
-		],
-		"name": "getPetals",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxMint",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "numTokensMinted",
 		"outputs": [
@@ -509,145 +66,6 @@ const abi = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "ownerOf",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "price",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes4",
-				"name": "interfaceId",
-				"type": "bytes4"
-			}
-		],
-		"name": "supportsInterface",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenOfOwnerByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -682,7 +100,7 @@ function Home() {
   const [working, setWorking] = useState(false);
   const [contract, setContract] = useState(null);
   const [error, setError] = useState(null);
-  const [yearTotal, setYearTotal] = useState(0);
+  const [totalSupply, setTotalSupply] = useState(0);
   // const [friendAddress, setFriendAddress] = useState("");
   // const [realFriendAddress, setRealFriendAddress] = useState("");
   const [mintNumber, setMintNumber] = useState("");
@@ -697,12 +115,12 @@ function Home() {
     console.log(contract)
     setContract(contract);
 
-    // contract.methods
-    //   .currentYearTotalSupply()
-    //   .call()
-    //   .then((res) => {
-    //     setYearTotal(res);
-    //   }, handleError);
+    contract.methods
+      .totalSupply()
+      .call()
+      .then((res) => {
+        setTotalSupply(res);
+      }, handleError);
 
     setWorking(false);
   }, [account]);
@@ -729,10 +147,11 @@ function Home() {
 
   function craftForSelf() {
     setWorking(true);
-    console.log(mintNumber);
+    console.log("Mint number" + mintNumber);
+    let price = mintNumber * mintPrice;
     contract.methods
       .mintForSelf(mintNumber)
-      .send({ from: account, value: utils.toWei("0.015", "ether") })
+      .send({ from: account, value: utils.toWei(price.toString(), "ether") })
       .then((res) => {
         console.log(res);
         setWorking(false);
@@ -840,24 +259,9 @@ function Home() {
 
                 {/* <div className="h-2"></div> */}
 
-                {transactionHash && (
-                  <div className="text-green-500 text-xs flex flex-col space-y-2">
-                    <span>Success!</span>
-                    <a
-                      href={`https://etherscan.io/tx/${transactionHash}`}
-                      className="btn font-normal bg-gray-100 rounded-full shadow-md"
-                    >
-                      View transaction on Etherscan
-                    </a>
-                  </div>
-                )}
-                {error && (
-                  <div className="text-red-500 text-xs">{error.message}</div>
-                )}
-
                 <div className="text-sm leading-normal">
                   <p>
-                    <strong>Each flower cost you Ξ0.01 + gas fees to mint</strong>{" "}
+                    <strong>Each flower cost you Ξ{mintPrice} + gas fees to mint</strong>{" "}
                   </p>
                   <p>
                     The flowers generated will be different depending on your wallet address
@@ -867,24 +271,95 @@ function Home() {
                     will be different depending on its number and the
                     destination address.
                   </p> */}
-                  <input
+                  <div className="w-full mt-4">
+                    <div className="flex gap-2 w-full"
+                    onChange={(event) => {
+                      setMintNumber(event.target.value);
+                    }}>
+                      <div className="radio w-full">
+                        <input
+                          ref={mintNumberField}
+                          name="answer"
+                          type="radio"
+                          id="one"
+                          hidden="hidden"
+                          value="1"
+                        />
+                        <label
+                          htmlFor="one"
+                          className="px-2 py-1 rounded-lg flex justify-center items-center text-xl font-bold w-full cursor-pointer"
+                        >
+                          1 🌸
+                        </label>
+                      </div>
+                      <div className="radio w-full">
+                        <input
+                          ref={mintNumberField}
+                          name="answer"
+                          type="radio"
+                          id="three"
+                          hidden="hidden"
+                          value="3"
+                        />
+                        <label
+                          htmlFor="three"
+                          className="px-2 py-1 rounded-lg flex justify-center items-center text-xl font-bold w-full cursor-pointer"
+                        >
+                          3 🌸
+                        </label>
+                      </div>
+                      <div className="radio w-full">
+                        <input
+                          ref={mintNumberField}
+                          name="answer"
+                          type="radio"
+                          id="five"
+                          hidden="hidden"
+                          value="5"
+                        />
+                        <label
+                          htmlFor="five"
+                          className="px-2 py-1 rounded-lg flex justify-center items-center text-xl font-bold w-full cursor-pointer"
+                        >
+                          5 🌸
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  {/* <input
                     ref={mintNumberField}
-                    className="input text-sm rounded-2xl bg-white mt-8"
+                    className="input text-sm rounded-xl bg-white mt-4 p-3 border-gray-400"
                     value={mintNumber}
                     onChange={(event) => {
                       setMintNumber(event.target.value);
                     }}
                     disabled={working}
                     placeholder={"Number of flowers to mint "}
-                  />
+                  /> */}
 
                   <MintButton
                     disabled={working || soldOut}
                     onClick={craftForSelf}
                     className="p-2 justify-center mt-2"
                   >
-                    Mint Now
+                    Mint Now (Ξ{mintPrice*mintNumber})
                   </MintButton>
+
+                  {transactionHash && (
+                    <div className="text-green-500 text-sm flex flex-col space-y-2 mt-4">
+                      <span>Yay! Successfully minted your flower!</span>
+                      <a
+                        href={`https://etherscan.io/tx/${transactionHash}`}
+                        className="font-normal underline"
+                      >
+                        View on Etherscan
+                      </a>
+
+                    </div>
+                  )}
+                  {error && (
+                    <div className="text-red-500 text-xs mt-4">{error.message}</div>
+                  )}
 
                   {/* <p className="pt-8">
                     {yearTotal}/5,000 flowers have been minted in{" "}
@@ -921,9 +396,9 @@ function Home() {
               <p className="mt-1">
                 Flowers, and the upcoming releases under by the <em>on-chain collective</em> are designed and coded 
                 by {' '}
-                <A href="https://screenshake.co">
+                <A href="https://twitter.com/screenshake" target="_blank">
                   Saransh Sinha
-                </A> & <A href="https://nitinrgupta.com">
+                </A> & <A href="https://twitter.com/nitinrgupta" target="_blank">
                   Nitin Gupta
                 </A>
                 
