@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Roboto&display=swap');
 
 @layer components {
   .btn {
@@ -23,10 +23,14 @@
 }
 
 @layer utilities {
-  .helvetica {
-    font-family: "Helvetica";
+  .crimson {
+    font-family: "Crimson Text";
+  }
+  .roboto {
+    font-family: "Roboto";
   }
 }
+
 
 @tailwind base;
 @tailwind components;
@@ -34,13 +38,18 @@
 
 html,
 * {
-  @apply helvetica;
+  @apply crimson;
 }
 
 body {
-  @apply bg-white dark:bg-white text-black dark:text-gray-600;
+  color: #cfcfcf;
 }
-
+input, label {
+  @apply roboto;
+}
+.flowers {
+  background-color: #23292A;
+}
 .radio input ~ label {
   background-color: rgb(233, 225, 225);
   color: rgb(158, 146, 146);
@@ -48,4 +57,8 @@ body {
 .radio input:checked ~ label {
   background-color: rgb(76, 76, 76);
   color: white;
+}
+
+.faq {
+  font-size: 20px;
 }
