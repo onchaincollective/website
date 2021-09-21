@@ -41,14 +41,29 @@ html,
   @apply crimson;
 }
 
-body {
-  color: #cfcfcf;
-}
 input, label {
   @apply roboto;
 }
+
+/* Home page */
+.home {
+  background-color: #EFF0F2;
+  color: #2F3D40;
+}
+.oc-color {
+  color: #0C0C0C;
+}
+.occ-logo {
+  letter-spacing: -4px;
+  font-weight: 600;
+  /* font-size: 64px; */
+}
+
+
+/* flowers */
 .flowers {
   background-color: #23292A;
+  color: #cfcfcf;
 }
 .radio input ~ label {
   background-color: rgb(233, 225, 225);
@@ -58,7 +73,6 @@ input, label {
   background-color: rgb(76, 76, 76);
   color: white;
 }
-
 .faq {
   font-size: 20px;
 }
