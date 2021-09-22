@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import Link from 'next/link'
 
 export default function Home() {
-  useEffect( () => { document.querySelector("body").classList.add("home") } );
+  useEffect( () => { 
+    document.querySelector("body").classList.remove("flowers"); 
+    document.querySelector("body").classList.add("home");
+  } );
   return (
     <main className="occ-home">
       <Head>

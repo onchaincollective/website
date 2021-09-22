@@ -110,7 +110,10 @@ function Home() {
   const friendField = useRef();
   const mintNumberField = useRef();
 
-  useEffect( () => { document.querySelector("body").classList.add("flowers") } );
+  useEffect( () => { 
+      document.querySelector("body").classList.add("flowers");
+      document.querySelector("body").classList.remove("home");
+    } );
 
   useEffect(() => {
     if (!library) return;
@@ -374,7 +377,7 @@ function Home() {
         <div className="p-5 md:p-16 ">
         <h1 className="mb-4">FAQ</h1>
           <div className="md:flex justify-between flex-row faq">
-            <div className="w-full flex-auto leading-normal md:max-w-md">
+            <div className="w-full flex-auto leading-normal md:max-w-md mr-8">
               <div className="mb-6">
                 <H4>Why flowers?</H4>
                 <p className="mt-2">Ask yourself – why not?</p>
