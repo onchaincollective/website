@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="occ-home">
       <Head>
-        <title>On chain collective</title>
+        <title>OCC NFTs</title>
         <meta name="title" content="On chain collective"/>
         <meta name="description" content="Channeling our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share."/>
 
@@ -44,7 +44,7 @@ export default function Home() {
           ~
         </div>
         <div className="mt-16 text-center flex flex-col justify-center items-center">
-          <img src="/occ/flowers.png" className="w-4/5" />
+          <img src="/occ/flowers.png" className="w-full" />
           <p className="text-sm mt-8">occ #1</p>
           <h1 className="text-3xl mt-2 oc-color font-bold">
             Flowers
