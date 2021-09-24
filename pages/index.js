@@ -18,19 +18,19 @@ export default function Home() {
         <meta property="og:url" content="https://www.occ.xyz/"/>
         <meta property="og:title" content="On chain collective"/>
         <meta property="og:description" content="Channeling our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share."/>
-        <meta property="og:image" content=""/>
+        <meta property="og:image" content="/occ/social_image.png"/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://www.occ.xyz/"/>
         <meta property="twitter:title" content="On chain collective"/>
         <meta property="twitter:description" content="Channeling our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share."/>
-        <meta property="twitter:image" content=""/>
+        <meta property="twitter:image" content="/occ/social_image.png"/>
         <link rel="icon" href="/occ/favicon.ico" sizes="any" />
         <link rel="icon" href="/occ/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/occ/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
-
+      
       <div className="flex align-center flex-col max-w-2xl mx-auto text-center mb-10 p-4">
         <div className="mt-20">
           <header className="occ-logo oc-color text-5xl md:text-6xl">
