@@ -12,7 +12,7 @@ export default function Home() {
       <Head>
         <title>OCC NFTs</title>
         <meta name="title" content="On chain collective"/>
-        <meta name="description" content="Channeling our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share."/>
+        <meta name="description" content="Channeling our love for art and technology, and using completely on-chain tech to make beautiful NFTs for you to own or to share."/>
 
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://www.occ.xyz/"/>
