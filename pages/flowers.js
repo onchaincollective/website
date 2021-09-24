@@ -201,10 +201,10 @@ function Home() {
         <link rel="apple-touch-icon" href="/flowers/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
-      <div className="max-w-6xl mx-auto text-base md:text-2xl">
+      <div className="max-w-6xl mx-auto text-xl md:text-2xl">
         <div className="p-5 md:px-16 pt-32">
           <header className="leading-normal">
-            <img src="/flowers/logo.png" className="w-1/4" />
+            <img src="/flowers/logo.png" className="w-1/2 md:w-1/4" />
             <p className="text-md italic mt-4 opacity-50">On chain collective project #1</p>
           </header>
 
@@ -227,14 +227,14 @@ function Home() {
           </div>
         </div>
         {active && (
-          <div className="flex md:pr-16 md:pl-16  w-full">
+          <div className="flex p-5 md:px-16 w-full">
             <p>
             Each flower will cost you <em>0.015 eth + gas fees to mint</em>. You can mint one for yourself or 
             for a friend. The flowers generated will be unique for each wallet address
             </p>
           </div>
         )}
-        <div className="flex md:pr-16 md:pl-16 md:max-w-md">
+        <div className="flex p-5 md:px-16 md:max-w-md">
           {active && (
             <div className="w-full">
               <div className="h-4"></div>
@@ -377,7 +377,7 @@ function Home() {
         <div className="p-5 md:p-16 ">
         <h1 className="mb-4">FAQ</h1>
           <div className="md:flex justify-between flex-row faq">
-            <div className="w-full flex-auto leading-normal md:max-w-md mr-8">
+            <div className="w-full flex-auto leading-normal md:max-w-md mr-16">
               <div className="mb-6">
                 <H4>Why flowers?</H4>
                 <p className="mt-2">Ask yourself – why not?</p>
