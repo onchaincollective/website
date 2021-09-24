@@ -49,9 +49,7 @@ export default function Home() {
           <h1 className="text-3xl mt-2 oc-color font-bold">
             Flowers
           </h1>
-          <Link href="/flowers">
-            <em className="mt-4 opacity-50">~available to mint soon~</em>
-          </Link>
+          <em className="mt-4 opacity-50">~available to mint soon~</em>
         </div>
         <div className="text-md mt-24">
           <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
