@@ -21,15 +21,16 @@ export default function Home() {
           <header className="occ-logo oc-color text-5xl md:text-6xl">
             On chain collective
           </header>
-          <p className="text-xl mt-4">Our goal is to channel our love for art and technology, 
+          <p className="text-xl mt-8">Our goal is to channel our love for art and technology, 
           and use completely on-chain tech to make beautiful NFTs for you to own or to share.</p>
-          <p className="text-xl mt-4"><b>Every NFT is 100% on chain, generated in the smart contract &amp; stored on the ethereum forever.</b></p>
+          <p className="text-xl mt-4">Every NFT is 100% on chain, generated in the smart contract &amp; 
+            stored on the ethereum blockchain forever.</p>
         </div>
         <div className="mt-20 opacity-50">
           ~
         </div>
         <div className="mt-16 text-center flex flex-col justify-center items-center">
-          <img src="/occ/flowers.svg" className="w-4/5" />
+          <img src="/occ/flowers.png" className="w-4/5" />
           <p className="text-sm mt-8">occ #1</p>
           <h1 className="text-3xl mt-2 oc-color font-bold">
             Flowers
@@ -39,11 +40,11 @@ export default function Home() {
           </Link>
         </div>
         <div className="text-md mt-24">
-          <a href="https://twitter.com/OnChainCo" className="hover:underline">
+          <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
             twitter
           </a>{" "}
           &bull;{" "}
-          <a href="https://discord.com/invite/BUCup66VKc" className="hover:underline">
+          <a href="https://discord.com/invite/BUCup66VKc" target="_blank" className="hover:underline">
             discord
           </a>{" "}
         </div>
