@@ -46,11 +46,11 @@ export default function Home() {
         <div className="mt-16 text-center flex flex-col justify-center items-center">
           <img src="/occ/flowers.png" className="w-full" />
           <p className="text-sm mt-8">occ #1</p>
-          <h1 className="text-5xl ml-5 mt-2 oc-color font-snell">
+          <h1 className="text-3xl md:text-4xl ml-5 mt-1 oc-color font-snell">
             flowers
           </h1>
           <p className="text-xl mt-4">
-            Fully on-chain, programatically generated flowers.<br/>
+            Fully on-chain, programatically generated flowers.&nbsp;<br className="hidden md:block"/>
             For you, or a special someone in your life 🌼
           </p>
           <Link href="/flowers">
