@@ -32,11 +32,11 @@ export default function Home() {
         </Head>
       
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
-            <div className="mt-20">
-            <header className="text-5xl md:text-6xl font-snell ml-8">
-                flowers
-            </header>
-            <h3 className="mt-6">Fully on-chain generative NFTs</h3>
+            <div className="mt-10">
+                <header className="text-5xl md:text-6xl font-snell ml-8">
+                    flowers
+                </header>
+                <h3 className="mt-6">Fully on-chain generative NFTs</h3>
             </div>
         </div>
         <div className="mt-10 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
