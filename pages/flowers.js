@@ -34,7 +34,7 @@ export default function Home() {
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
             <div className="mt-10">
                 <Link href="/">
-                    <p className="text-sm mt-8 opacity-50 cursor-pointer"><em>occ #1</em></p>
+                    <p className="text-sm mt-8 opacity-50 cursor-pointer">occ <span className="text-xs">#1</span></p>
                 </Link>
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
@@ -61,7 +61,7 @@ export default function Home() {
             </ul>
         </div>
 
-        <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-8">
+        <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
             <h1 className="text-xl crimson-pro">What is the On chain collective?</h1>
             <p className="mt-2 opacity-90">
                 OCC is more than a run-of-the-mill NFT art project. Our goal is to channel our love for art and technology, 
@@ -74,8 +74,8 @@ export default function Home() {
                 Our first mint (of season 1): flowers is a collection of beautiful flower NFTs that are programmatically generated 
                 at the precise moment you mint it 🌼
             </p>
-
-            <h1 className="text-xl mt-16 crimson-pro">Now let's talk Flowers <em>(our genesis mint ✨)</em></h1>
+            
+            <h1 className="text-xl mt-16 crimson-pro">Now let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
             <p className="mt-2 opacity-90">
                 Why flowers you ask? Because flowers are pretty and why NOT? 
             </p>
