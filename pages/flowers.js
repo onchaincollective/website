@@ -114,6 +114,7 @@ export default function Home() {
                 PS: Flowers is the first project for OCC Season 1. 
                 We'll share more details on Flowers, our team &amp; what's the deal with on-chain very soon. But first, we get back to work.
             </em>
+            <p className="mt-8">🌺👃🌺</p>
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
             <div className="text-md ">
