@@ -26,7 +26,7 @@ export default function Home() {
         <meta property="twitter:description" content="On-chain flower NFTs for you to own or to share."/>
         <meta property="twitter:image" content="https://www.occ.xyz/flowers/social_image.png"/>
         <link rel="icon" href="/flowers/favicon.ico" sizes="any" />
-        <link rel="icon" href="/flowers/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/flowers/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/flowers/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
