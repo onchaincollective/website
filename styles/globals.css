@@ -82,6 +82,9 @@ input, label {
     border-radius: 20px;
   }
 }
+.flower-tease svg{
+  width: 100%;
+}
 /* 
 .quotes {
   width: 100%;

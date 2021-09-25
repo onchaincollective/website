@@ -36,14 +36,19 @@ export default function Home() {
           <header className="text-5xl md:text-6xl font-snell ml-8">
             flowers
           </header>
+          <h3 className="mt-6">Fully on-chain generative NFTs</h3>
         </div>
     </div>
-    <div className="mt-24 max-w-6xl lg:max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center">
-        <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
-        <div className="p-4 flex">&nbsp;</div>
-        <object data="/flowers/leftflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
-        <div className="p-4 flex">&nbsp;</div>
-        <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
+    <div className="mt-20 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
+        <div className="w-full rounded-2xl p-4">
+            <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+        </div>
+        <div className="w-full rounded-2xl p-4">
+            <object data="/flowers/leftflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+        </div>
+        <div className="w-full rounded-2xl p-4">
+            <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+        </div>
     </div>
     <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
     <ul>
