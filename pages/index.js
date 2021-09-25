@@ -18,13 +18,13 @@ export default function Home() {
         <meta property="og:url" content="https://www.occ.xyz/"/>
         <meta property="og:title" content="On chain collective"/>
         <meta property="og:description" content="On-chain NFTs for you to own or to share."/>
-        <meta property="og:image" content="https://www.occ.xyz/flowers/social_image.png"/>
+        <meta property="og:image" content="https://www.occ.xyz/occ/social_image.png"/>
 
         <meta property="twitter:card" content="summary_large_image"/>
         <meta property="twitter:url" content="https://www.occ.xyz/"/>
         <meta property="twitter:title" content="On chain collective"/>
         <meta property="twitter:description" content="On-chain NFTs for you to own or to share."/>
-        <meta property="twitter:image" content="https://www.occ.xyz/flowers/social_image.png"/>
+        <meta property="twitter:image" content="https://www.occ.xyz/occ/social_image.png"/>
         <link rel="icon" href="/occ/favicon.ico" sizes="any" />
         <link rel="icon" href="/occ/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/occ/apple-touch-icon.png" />
@@ -36,8 +36,8 @@ export default function Home() {
           <header className="occ-logo oc-color text-5xl md:text-6xl">
             On chain collective
           </header>
-          <p className="text-xl mt-8">We channel our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share.</p>
-          <p className="text-xl mt-4">Every NFT is 100% on-chain, generated in the smart contract &amp; 
+          <p className="text-xl mt-8 font-normal">We channel our love for art and technology, and use completely on-chain tech to make beautiful NFTs for you to own or to share.</p>
+          <p className="text-xl mt-4 font-normal">Every NFT is 100% on-chain, generated in the smart contract &amp; 
           stored on the ethereum blockchain forever.</p>
         </div>
         <div className="mt-20 opacity-50">
@@ -49,7 +49,7 @@ export default function Home() {
           <h1 className="text-3xl md:text-4xl ml-5 mt-1 oc-color font-snell">
             flowers
           </h1>
-          <p className="text-xl mt-4">
+          <p className="text-xl mt-4 font-normal">
             Fully on-chain, programatically generated flowers.&nbsp;<br className="hidden md:block"/>
             For you, or a special someone in your life 🌼
           </p>
