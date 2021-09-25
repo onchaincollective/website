@@ -39,11 +39,11 @@ export default function Home() {
         </div>
     </div>
     <div className="mt-24 max-w-6xl lg:max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center">
-        <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-full w-4/5 md:w-1/3 rounded-2xl"></object>
+        <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
         <div className="p-4 flex">&nbsp;</div>
-        <object data="/flowers/leftflower.svg" type="image/svg+xml" className="w-full w-4/5 md:w-1/3 rounded-2xl"></object>
+        <object data="/flowers/leftflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
         <div className="p-4 flex">&nbsp;</div>
-        <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full w-4/5 md:w-1/3 rounded-2xl"></object>
+        <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-4/5 md:w-1/3 rounded-2xl flower"></object>
     </div>
     <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
     <ul>
