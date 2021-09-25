@@ -33,7 +33,9 @@ export default function Home() {
       
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
             <div className="mt-10">
-                <p className="text-sm mt-8">occ #1</p>
+                <Link href="/">
+                    <p className="text-sm mt-8 opacity-50 cursor-pointer"><em>occ #1</em></p>
+                </Link>
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
                 </header>
