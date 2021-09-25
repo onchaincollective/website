@@ -74,3 +74,29 @@ input, label {
 .font-snell {
   @apply snell;
 }
+/* 
+.quotes {
+  width: 100%;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+li:nth-child(2) > .quotes {
+  animation-delay: 3s;
+}
+
+li:nth-child(3) > .quotes {
+  animation-delay: 6s;
+}
+
+li:nth-child(4) > .quotes {
+  animation-delay: 9s;
+}
+
+@keyframes fadeIn {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+} */

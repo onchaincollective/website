@@ -38,13 +38,22 @@ export default function Home() {
           </header>
         </div>
     </div>
-    <div className="mt-24 max-w-7xl mx-auto text-center flex flex-col md:flex-row justify-center items-center">
-        <img src="/flowers/middleflower.svg" className="w-full md:w-1/3" />
-        <img src="/flowers/leftflower.svg" className="w-full md:w-1/3" />
-        <img src="/flowers/rightflower.svg" className="w-full md:w-1/3" />        
+    <div className="mt-24 max-w-6xl lg:max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center">
+        <img src="/flowers/middleflower.svg" className="w-full w-4/5 md:w-1/3 rounded-2xl" />
+        <div className="p-4 flex">&nbsp;</div>
+        <img src="/flowers/leftflower.svg" className="w-full w-4/5 md:w-1/3 rounded-2xl"/>
+        <div className="p-4 flex">&nbsp;</div>
+        <img src="/flowers/rightflower.svg" className="w-full w-4/5 md:w-1/3 rounded-2xl" />        
     </div>
-    <div className="flex align-center flex-col max-w-2xl mx-auto text-center mb-10 p-4">
-        <div className="text-md mt-20">
+    <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
+    <ul>
+        <li><h3 className="quotes text-xl">“There are always flowers for those who want to see them” ~ Henri Matisse</h3></li>
+        {/* <li><h3 className="quotes">“Every flower is a soul blossoming in nature” ~ Gerard De Nerwal</h3></li>
+        <li><h3 className="quotes">“In joy and in sadness, flowers are our constant friends” ~ Unknown</h3></li> */}
+    </ul>
+    </div>
+    <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-12 mb-10 p-4">
+        <div className="text-md ">
           <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
             twitter
           </a>{" "}
