@@ -29,6 +29,23 @@ export default function Home() {
         <link rel="icon" href="/occ/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/occ/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+        />
       </Head>
       
       <div className="flex align-center flex-col max-w-2xl mx-auto text-center mb-10 p-4">
