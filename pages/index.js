@@ -46,10 +46,16 @@ export default function Home() {
         <div className="mt-16 text-center flex flex-col justify-center items-center">
           <img src="/occ/flowers.png" className="w-full" />
           <p className="text-sm mt-8">occ #1</p>
-          <h1 className="text-3xl mt-2 oc-color font-bold">
-            Flowers
+          <h1 className="text-5xl ml-5 mt-2 oc-color font-snell">
+            flowers
           </h1>
-          <em className="mt-4 opacity-50">~available to mint soon~</em>
+          <p className="text-xl mt-4">
+            Fully on-chain, programatically generated flowers.<br/>
+            For you, or a special someone in your life 🌼
+          </p>
+          <Link href="/flowers">
+            <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12 hover:underline"><em>view flowers</em></div>
+          </Link>
         </div>
         <div className="text-md mt-24">
           <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
