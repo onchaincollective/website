@@ -17,7 +17,7 @@ export default function Home() {
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://www.occ.xyz/"/>
         <meta property="og:title" content="On chain collective"/>
-        <meta property="og:description" content="Channeling our love for art and technology, and using completely on-chain tech to make beautiful NFTs for you to own or to share."/>
+        <meta property="og:description" content="On-chain NFTs for you to own or to share."/>
         <meta property="og:image" content="https://www.occ.xyz/occ/social_image.png"/>
 
         <meta property="twitter:card" content="summary_large_image"/>

@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Roboto&display=swap');
+@font-face {
+  font-family: "snell";
+  src: url(/flowers/SnellBTRegular.otf);
+}
 
 @layer components {
   .btn {
@@ -29,6 +33,9 @@
   .roboto {
     font-family: "Roboto";
   }
+  .snell {
+    font-family: "snell";
+  }
 }
 
 
@@ -57,4 +64,13 @@ input, label {
   letter-spacing: -4px;
   font-weight: 600;
   /* font-size: 64px; */
+}
+
+/* Flowers page */
+.flowers {
+  background-color: #000000;
+  color: #fff;
+}
+.font-snell {
+  @apply snell;
 }
