@@ -52,7 +52,7 @@ export default function Home() {
         <li><h3 className="quotes">“In joy and in sadness, flowers are our constant friends” ~ Unknown</h3></li> */}
     </ul>
     </div>
-    <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-12 mb-10 p-4">
+    <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-6 mb-10 p-4">
         <div className="text-md ">
           <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
             twitter
