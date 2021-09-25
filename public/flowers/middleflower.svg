@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="420" height="420" fill="none" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<filter id="c" x="-50%" y="-50%" width="200%" height="200%">
+<feTurbulence baseFrequency="0.08506098060668195"/>
+<feDisplacementMap in="SourceGraphic" scale="70.47006888459073"/>
+<feOffset dx="-30" dy="-25"/>
+<feDropShadow dx="8" dy="8" flood-color="#000000" stdDeviation="0"/>
+</filter>
+</defs>
+<rect x="-50%" y="-50%" width="200%" height="200%" fill="#F2CB6C"/>
+<rect width="500" height="500" fill="#CDCDD0" opacity=".2" style="mix-blend-mode:overlay"/>
+<g filter="url(#c)" stroke="#000" stroke-width="4">
+<defs>
+<ellipse id="a" cx="250" cy="217" rx="25" ry="27"/>
+<mask id="b">
+<rect width="100%" height="100%" fill="#fff"/>
+<use transform="rotate(72 250 250)" fill="black" xlink:href="#a"/>
+</mask>
+</defs>
+<use transform="rotate(0 250 250)" fill="#F0CF61" mask="url(#b)" xlink:href="#a">
+<animateTransform attributeName="transform" begin="0s" dur="12s" from="0 250 250" repeatCount="indefinite" to="360 250 250" type="rotate"/>
+</use>
+<use transform="rotate(72 250 250)" fill="#F0CF61" mask="url(#b)" xlink:href="#a">
+<animateTransform attributeName="transform" begin="0s" dur="12s" from="72 250 250" repeatCount="indefinite" to="432 250 250" type="rotate"/>
+</use>
+<use transform="rotate(144 250 250)" fill="#F0CF61" mask="url(#b)" xlink:href="#a">
+<animateTransform attributeName="transform" begin="0s" dur="12s" from="144 250 250" repeatCount="indefinite" to="504 250 250" type="rotate"/>
+</use>
+<use transform="rotate(216 250 250)" fill="#F0CF61" mask="url(#b)" xlink:href="#a">
+<animateTransform attributeName="transform" begin="0s" dur="12s" from="216 250 250" repeatCount="indefinite" to="576 250 250" type="rotate"/>
+</use>
+<use transform="rotate(288 250 250)" fill="#F0CF61" mask="url(#b)" xlink:href="#a">
+<animateTransform attributeName="transform" begin="0s" dur="12s" from="288 250 250" repeatCount="indefinite" to="648 250 250" type="rotate"/>
+</use>
+<circle cx="250" cy="250" r="30" fill="#FEDCCC"/>
+</g>
+</svg>
