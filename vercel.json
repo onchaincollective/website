@@ -4,11 +4,6 @@
       "source": "/discord",
       "destination": "https://discord.com/invite/BUCup66VKc", 
       "permanent": true
-    },
-    { 
-      "source": "/whitelist",
-      "destination": "https://gmu7jmyonm8.typeform.com/to/VNxH6GFd", 
-      "permanent": true
     }
   ]
 }
