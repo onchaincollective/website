@@ -104,13 +104,43 @@ input, label {
 .flower-tease svg{
   width: 100%;
 }
+
+.whitelist-logo {
+  font-weight: 600;
+  @apply crimson;
+}
+
+.whitelist-input {
+  border-radius: 200px;
+  border: 2px solid #5E5E5E;
+  background-color: transparent;
+  padding: 16px;
+  height: 54px;
+  width: 320px;
+  font-size: 20px;
+  @apply crimson-pro;
+}
+.whitelist-input:focus-visible {
+  border: 2px solid #5E5E5E;
+  outline: none;
+}
+.flower-button {
+  width: 320px;
+  border-radius: 100px;
+  transition: all 300ms ease-in-out;
+}
+.flower-button:hover {
+  background-color: #e4e4e4;
+}
+
 /* 
 .quotes {
   width: 100%;
   opacity: 0;
   animation-name: fadeIn;
   animation-duration: 3s;
-  animation-iteration-count: 1;
+  a
+  nimation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
 
