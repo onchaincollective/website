@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
     const [walletAddress, setWalletAddress] = useState("");
-    const [resultText, setResultText] = useState("Whitelist #1 is closed");
+    const [resultText, setResultText] = useState("Whitelist #1 & #2 is closed");
 
     useEffect( () => { 
         document.querySelector("body").classList.remove("home"); 
