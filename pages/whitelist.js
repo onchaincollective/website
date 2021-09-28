@@ -206,7 +206,7 @@ export default function Home() {
                 className="whitelist-input mt-12"
                 name="walletAddress"
                 type="text"
-                placeholder="Pase your wallet address"
+                placeholder="Paste your wallet address"
                 onChange={(event) => {
                 setWalletAddress(event.target.value);
                 }}
