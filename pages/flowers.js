@@ -56,7 +56,9 @@ export default function Home() {
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
                 </header>
-                <h3 className="mt-8 text-xl">Fully on-chain generative NFTs for you to own, or to share 🌼</h3>
+                <h3 className="mt-8 text-xl">Fully on-chain generative NFTs for you to own, or to share</h3>
+                <p className="mt-2 text-xl">✨ Pre-sale whitelisting has eneded. Click&nbsp;
+                <span className="hover:underline"><Link href="/whitelist-checker">here</Link></span>&nbsp;to see if you've made it ✨</p>
             </div>
         </div>
         <div className="mt-10 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">

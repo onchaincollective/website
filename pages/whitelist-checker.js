@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import Link from 'next/link'
 
 export default function Home() {
     const [walletAddress, setWalletAddress] = useState("");
@@ -321,9 +322,11 @@ export default function Home() {
             </Head>
         
             <div className="flex items-center flex-col max-w-2xl mx-auto text-center p-4 mt-8">
-                <header className="text-3xl font-snell ml-8">
-                    flowers
-                </header>
+                <Link href="/flowers">
+                    <header className="text-3xl font-snell ml-8 cursor-pointer">
+                        flowers
+                    </header>
+                </Link>
                 <h3 className="mt-2 text-7xl whitelist-logo">the whitelist</h3>
             </div>
             
