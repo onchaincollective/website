@@ -22,9 +22,6 @@
     @apply cursor-not-allowed opacity-70;
   }
 
-  .input {
-    @apply block w-full px-3 py-2 leading-normal text-left bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring dark:bg-gray-900 dark:border-gray-700;
-  }
 }
 
 @layer utilities {
@@ -104,7 +101,7 @@ p {
 }
 .mint-button {
   border-radius: 100px;
-  transition: all 300ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 .mint-button:hover {
   background-color: #e4e4e4;
@@ -133,6 +130,15 @@ p {
 .active {
   border: 2px solid #EED189;
   opacity: 1;
+}
+
+input {
+  background-color: white;
+  outline: none;
+  color: #000000;
+}
+input:focus {
+  outline: none;
 }
 
 /* 
