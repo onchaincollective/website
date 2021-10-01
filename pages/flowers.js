@@ -13,10 +13,8 @@ import Link from 'next/link'
 
 const contractAddress =
   process.env.NODE_ENV === "production"
-    ? "0x53270462ca2a7133ad0de07bc0f652e227ba8e0b"
-    : "0x53270462ca2a7133ad0de07bc0f652e227ba8e0b";
-
-const soldOut = false; // omg!
+    ? "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C"
+    : "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C";
 
 const mintPrice = 0.025;
 
@@ -29,613 +27,8 @@ function getLibrary(provider) {
   return new Web3(provider);
 }
 
-const abi = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "approved",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "approve",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "walletAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amountOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "mintForFriend",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amountOfTokens",
-				"type": "uint256"
-			}
-		],
-		"name": "mintForSelf",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "_data",
-				"type": "bytes"
-			}
-		],
-		"name": "safeTransferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"internalType": "bool",
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "setApprovalForAll",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newMaxMint",
-				"type": "uint256"
-			}
-		],
-		"name": "setMaxMint",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newMaxSupply",
-				"type": "uint256"
-			}
-		],
-		"name": "setMaxSupply",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newPrice",
-				"type": "uint256"
-			}
-		],
-		"name": "setPrice",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "togglePaused",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "transferFrom",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "withdrawAll",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "getApproved",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "operator",
-				"type": "address"
-			}
-		],
-		"name": "isApprovedForAll",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxMint",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxPerAddress",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "maxSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "numTokensMinted",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "ownerOf",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "paused",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "price",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes4",
-				"name": "interfaceId",
-				"type": "bytes4"
-			}
-		],
-		"name": "supportsInterface",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "index",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenOfOwnerByIndex",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "tokenURI",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-]
+const abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"uint256","name":"_claimAmount","type":"uint256"},{"internalType":"address[]","name":"entries","type":"address[]"}],"name":"addToWhitelist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"allSalesPaused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"enablePublicSale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxMint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxPerAddress","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"walletAddress","type":"address"},{"internalType":"uint256","name":"amountOfTokens","type":"uint256"}],"name":"mintForFriend","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amountOfTokens","type":"uint256"}],"name":"mintForSelf","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numTokensMinted","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"price","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"privateSaleIsActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"entries","type":"address[]"}],"name":"removeFromWhitelist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxMint","type":"uint256"}],"name":"setMaxMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxPerAddress","type":"uint256"}],"name":"setMaxPerAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxSupply","type":"uint256"}],"name":"setMaxSupply","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newPrice","type":"uint256"}],"name":"setPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"toggleAllSalesPaused","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_addr","type":"address"}],"name":"whitelistInfoFor","outputs":[{"internalType":"bool","name":"isWhiteListed","type":"bool"},{"internalType":"uint256","name":"numHasMinted","type":"uint256"},{"internalType":"uint256","name":"allottedMints","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"payable","type":"function"}]
+
 
 export default function WrappedHome() {
     return (
@@ -647,8 +40,15 @@ export default function WrappedHome() {
 
 function Home() {
     const { activate, active, account, library } = useWeb3React();
-    console.log(account);
+
     const [working, setWorking] = useState(false);
+    const [maxMintPerTransaction, setMaxMintPerTransaction] = useState(0);
+    const [tokensMintedPerAddress, setTokensMintedPerAddress] = useState(0);
+    const [whitelist, setWhitelist] = useState(null);
+    const [maxPerAddress, setMaxPerAddress] = useState(0);
+    const [mintButtonText, setMintButtonText] = useState("Mint for yourself");
+    const [mintDisabled, setMintDisabled] = useState(false);
+    const [salesPaused, setSalesPaused] = useState(false);
     const [mintFriend, setMintFriend] = useState(false);
     const [contract, setContract] = useState(null);
     const [error, setError] = useState(null);
@@ -660,43 +60,143 @@ function Home() {
     const [transactionHash, setTransactionHash] = useState(null);
     const friendField = useRef();
     const mintNumberField = useRef();
+
     useEffect( () => { 
         document.querySelector("body").classList.remove("home"); 
         document.querySelector("body").classList.add("flowers");
-    } );
+    });
 
     useEffect(() => {
         if (!library) return;
-    
+        console.log(account)
         const contract = new library.eth.Contract(abi, contractAddress);
-        console.log(contract)
+
         setContract(contract);
-    
+
+        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`);
+
         contract.methods
         .totalSupply()
         .call()
         .then((res) => {
-        setTotalSupply(res);
-        console.log("Num token minted: ", res);
+        setTotalSupply(parseInt(res));
+        // setTotalSupply(4096)
         }, handleError);
 
         contract.methods
         .maxSupply()
         .call()
         .then((res) => {
-        setMaxSupply(res);
-        console.log("Total supply: ", res);
+        setMaxSupply(parseInt(res));
         }, handleError);
 
         contract.methods
-        .paused()
+        .allSalesPaused()
         .call()
         .then((res) => {
-        console.log("Paused ", res);
+        setSalesPaused(res);
+        // setSalesPaused(false);
         }, handleError);
 
+        contract.methods
+        .maxMint()
+        .call()
+        .then((res) => {
+        setMaxMintPerTransaction(parseInt(res))
+        }, handleError);
+
+        contract.methods
+        .maxPerAddress()
+        .call()
+        .then((res) => {
+        setMaxPerAddress(parseInt(res))
+        // setMaxPerAddress(3)
+        }, handleError);
+
+        contract.methods
+        .balanceOf(account)
+        .call()
+        .then((res) => {
+        setTokensMintedPerAddress(parseInt(res));
+        }, handleError);
+
+        contract.methods
+        .whitelistInfoFor(account)
+        .call()
+        .then((res) => {
+        setWhitelist(res);
+        }, handleError);
+
+
         setWorking(false);
+        
     }, [account]);
+
+
+    useEffect(() => {
+        console.log("use effect called");
+        console.log("Working: ", working);
+        console.log("SalesPaused: ", salesPaused);
+        // console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
+        console.log("Max Mint Per Address: ", maxPerAddress);
+        console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
+        // console.log("Mint Number: ", mintNumber);
+        // console.log("maxSupply: ", maxSupply);
+        // console.log("totalSupply: ", totalSupply);
+        // console.log("mintNumber: ", mintNumber);
+        console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
+        console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
+        console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
+        console.log("(whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))", (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))));
+
+        mintFriend ? 
+        setMintButtonText("Mint now (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`) :
+        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`);
+        
+
+        if (salesPaused) {
+            setMintButtonText("Minting is paused right now");
+        } else if (totalSupply >= maxSupply) {
+            setMintButtonText("Minting has ended");
+        } else if (((totalSupply + mintNumber) > maxSupply)) {
+            setMintButtonText("Minting will exceed max supply");
+        } else if ((mintNumber > maxMintPerTransaction)) {
+            setMintButtonText("Reached max limit per transaction");
+        } else if ((tokensMintedPerAddress > maxPerAddress) || ((tokensMintedPerAddress + mintNumber) > maxPerAddress)) {
+            setMintButtonText("Max mint per wallet exceeded");
+        } else if (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
+            setMintButtonText("Max mint per wallet exceeded");
+        }
+
+        setMintDisabled(
+            working || 
+            salesPaused ||
+            (totalSupply >= maxSupply ) || 
+            ((totalSupply + mintNumber) > maxSupply) || 
+            (mintNumber > maxMintPerTransaction) || 
+            (tokensMintedPerAddress > maxPerAddress) || 
+            ((tokensMintedPerAddress + mintNumber) > maxPerAddress) ||
+            (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
+        )
+
+        console.log(mintDisabled);
+
+    }, [working, 
+        totalSupply, 
+        maxSupply, 
+        salesPaused, 
+        mintNumber, 
+        maxMintPerTransaction,
+        maxPerAddress, 
+        tokensMintedPerAddress,
+        whitelist]);
+
+    useEffect(() => {
+        mintFriend ?
+            setMintButtonText("Mint now (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`) :
+            setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`)
+        
+    }, [mintFriend])
     
     
     useEffect(() => {
@@ -801,7 +301,7 @@ function Home() {
         </Head>
       
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
-            <div className="mt-10">
+            <div className="mt-6 md:mt-10">
                 <Link href="/">
                     <p className="text-sm mt-8 opacity-50 cursor-pointer">occ <span className="text-xs">#1</span></p>
                 </Link>
@@ -822,21 +322,26 @@ function Home() {
                 <ConnectButtons setWorking={setWorking} activate={activate} />
             </div>
         )}
-        {active && (
+        {active && (whitelist && !whitelist.isWhiteListed) && (
+            <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
+                Looks like you're not in the pre-sale list. Please wait for the public launch to mint the flowers
+            </p>
+        )}
+        {active && (whitelist && whitelist.isWhiteListed) && (
             <div>
-                <p className="text-center max-w-4xl mx-auto text-2xl text-left mt-2 md:p-4 p-6">
+                <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                     Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint one for yourself or for a friend. 
                     The flower will be programmatically generated at the precise moment you mint it.
                 </p>
 
                 <div className="max-w-4xl mx-auto text-center mt-8">
-                    <p className="text-center max-w-4xl mx-auto text-2xl text-left mb-16 md:px-4 px-6">
+                    <p className="text-center max-w-4xl mx-auto text-xl text-left mb-16 md:px-4 px-6">
                     {totalSupply} / {maxSupply} 🌺 have been minted so far
                     </p>
                     {/* <progress className="w-50 h-2 mx-auto" max={maxSupply} value={totalSupply} /> */}
-                    <div className="flex justify-center gap-2 w-full"
+                    <div className="flex justify-center flex-col items-center md:flex-row gap-2 w-full"
                     onChange={(event) => {
-                    setMintNumber(event.target.value);
+                    setMintNumber(parseInt(event.target.value));
                     }}>
                         <div className="radio">
                             <input
@@ -1047,56 +552,59 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center flex-col max-w-4xl mx-auto text-xl text-left">
-                    {mintFriend && (
-                        <div className="flexflex-row">
-                            <input
-                                ref={friendField}
-                                className="input text-sm md:text-lg rounded-2xl"
-                                value={friendAddress}
-                                onChange={(event) => {
-                                setFriendAddress(event.target.value);
-                                }}
-                                disabled={false}
-                                placeholder={"0x… or ENS domain"}
-                            />
+                <div className="flex items-center flex-row w-full md:max-w-4xl mx-auto text-xl text-left">
+                    <div className="flex flex-col items-center justify-center w-full">
+                        <div className="flex w-full flex-col md:flex-row items-center justify-center md:space-x-2 mt-2 p-8">
+                            {mintFriend && (
+                                <input
+                                    ref={friendField}
+                                    className="input text-lg py-3 px-4 w-full md:w-96 rounded-3xl"
+                                    value={friendAddress}
+                                    onChange={(event) => {
+                                    setFriendAddress(event.target.value);
+                                    }}
+                                    disabled={false}
+                                    placeholder={"0x… or ENS domain"}
+                                />
+                            )}
+                            <MintButton
+                                disabled={working || mintDisabled}
+                                onClick={mintFriend? mintForFriend : mintForSelf}
+                                className={mintFriend ? "p-2 mt-4 md:mt-0 justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white w-54 text-black px-8 py-3 cursor-pointer" :
+                                "p-2 mt-4 md:mt-0  justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white w-72 text-black px-8 py-3 cursor-pointer"}
+                                >
+                                <em>{mintButtonText}</em>
+                            </MintButton>
                         </div>
-                    )}
-                    <MintButton
-                    disabled={working || soldOut}
-                    onClick={mintFriend? mintForFriend : mintForSelf}
-                    className="p-2 justify-center mt-2 disabled:opacity-50"
-                    >
-                    <em>Mint for yourself ({(mintPrice*mintNumber).toFixed(2)} eth)</em>
-                    </MintButton>
-
-                    <p className="text-lg mt-6 cursor-pointer text-center opacity-50 hover:underline hover:opacity-100"
-                    onClick={() => {
-                        setMintFriend(true);
-                    }}
-                    hidden={mintFriend}>
-                    <em>Mint for a friend</em>
-                    </p>
-                    {transactionHash && (
-                    <div className="text-green-500 text-xl font-normal mt-4">
-                        <span>Yay ✨ Successfully minted your flower!</span>
-                        <a
-                        href={`https://etherscan.io/tx/${transactionHash}`}
-                        className="font-normal underline"
-                        >
-                        View on Etherscan
-                        </a>
+                        <p  className="text-lg cursor-pointer text-center opacity-50 hover:underline hover:opacity-100 disabled:cursor-not-allowed"
+                            onClick={() => {
+                                setMintFriend(!mintFriend);
+                            }}
+                            hidden={salesPaused}
+                            >
+                            <em>{mintFriend? 'Mint for yourself' : 'Mint for a friend'}</em>
+                        </p>
+                        {transactionHash && (
+                        <div className="text-green-500 text-xl font-normal mt-4">
+                            <span>Yay ✨ Successfully minted your flower!</span>
+                            <a
+                            href={`https://etherscan.io/tx/${transactionHash}`}
+                            className="font-normal underline"
+                            >
+                            View on Etherscan
+                            </a>
+                        </div>
+                        )}
+                        {error && (
+                            <div className="mt-8 text-center">
+                                <p className="text-red-500 text-xl font-normal mt-4">
+                                    {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
+                                    🥀 {error.message} 🥀 
+                                </p>
+                                {/* <a href={error.message.transactionHash} target="_blank" className="opacity-70"><em>view transaction</em></a> */}
+                            </div>
+                        )}
                     </div>
-                    )}
-                    {error && (
-                        <div className="mt-8 text-center">
-                            <p className="text-red-500 text-xl font-normal mt-4">
-                                {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
-                                🥀 {error.message} 🥀 
-                            </p>
-                            {/* <a href={error.message.transactionHash} target="_blank" className="opacity-70"><em>view transaction</em></a> */}
-                        </div>
-                    )}
                 </div>
 
             </div>
@@ -1159,7 +667,7 @@ function Home() {
                 at the precise moment you mint it 🌼
             </p>
             
-            <h1 className="text-xl mt-16 crimson-pro">Now let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
+            <h1 className="text-xl mt-16 crimson-pro">Let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
             <p className="mt-2 opacity-90">
                 Why flowers you ask? Because flowers are pretty and why NOT? 
             </p>
@@ -1229,10 +737,7 @@ function ConnectButtons({ activate, setWorking }) {
   function MintButton({ className, ...props }) {
     return (
       <button
-        className={cn(
-          "mint-button text-xl bg-white w-72 text-black px-8 py-3 cursor-pointer mt-9",
-          className
-        )}
+        className={cn(className)}
         {...props}
       />
     );
