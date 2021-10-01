@@ -16,12 +16,12 @@ const contractAddress =
     ? "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C"
     : "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C";
 
-const mintPrice = 0.025;
-
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
-  infuraId: "cddde80366fc42c2ac9202c6a0f9850b",
+  infuraId: "6041be06ca6b4e848a530e495d66e45d",
 });
+
+const defaultMintPrice = 0.025;
 
 function getLibrary(provider) {
   return new Web3(provider);
@@ -43,6 +43,8 @@ function Home() {
 
     const [working, setWorking] = useState(false);
     const [maxMintPerTransaction, setMaxMintPerTransaction] = useState(0);
+    const [mintPrice, setMintPrice] = useState(defaultMintPrice);
+    const [privateSaleIsActive, setPrivateSaleIsActive] = useState(false);
     const [tokensMintedPerAddress, setTokensMintedPerAddress] = useState(0);
     const [whitelist, setWhitelist] = useState(null);
     const [maxPerAddress, setMaxPerAddress] = useState(0);
@@ -73,7 +75,21 @@ function Home() {
 
         setContract(contract);
 
-        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`);
+        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`);
+
+        contract.methods
+        .price()
+        .call()
+        .then((res) => {
+            setMintPrice(utils.fromWei(res,'ether'));
+        }, handleError);
+
+        contract.methods
+        .privateSaleIsActive()
+        .call()
+        .then((res) => {
+            setPrivateSaleIsActive(res);
+        }, handleError);
 
         contract.methods
         .totalSupply()
@@ -125,6 +141,7 @@ function Home() {
         .call()
         .then((res) => {
         setWhitelist(res);
+        console.log(res);
         }, handleError);
 
 
@@ -148,10 +165,11 @@ function Home() {
         console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
         console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
         console.log("(whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))", (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))));
+        console.log("privateSaleIsActive", privateSaleIsActive);
 
         mintFriend ? 
-        setMintButtonText("Mint now (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`) :
-        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`);
+        setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
+        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`);
         
 
         if (salesPaused) {
@@ -164,10 +182,7 @@ function Home() {
             setMintButtonText("Reached max limit per transaction");
         } else if ((tokensMintedPerAddress > maxPerAddress) || ((tokensMintedPerAddress + mintNumber) > maxPerAddress)) {
             setMintButtonText("Max mint per wallet exceeded");
-        } else if (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
-            setMintButtonText("Max mint per wallet exceeded");
         }
-
         setMintDisabled(
             working || 
             salesPaused ||
@@ -179,6 +194,10 @@ function Home() {
             (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
         )
 
+        if (privateSaleIsActive && (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))) {
+            setMintButtonText("Max mint per wallet exceeded");
+        }
+
         console.log(mintDisabled);
 
     }, [working, 
@@ -189,12 +208,13 @@ function Home() {
         maxMintPerTransaction,
         maxPerAddress, 
         tokensMintedPerAddress,
+        privateSaleIsActive,
         whitelist]);
 
     useEffect(() => {
         mintFriend ?
-            setMintButtonText("Mint now (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`) :
-            setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toFixed(2) + ` eth)`)
+            setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
+            setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`)
         
     }, [mintFriend])
     
@@ -221,7 +241,7 @@ function Home() {
     function mintForSelf() {
         setWorking(true);
         console.log("Mint number" + mintNumber);
-        let price = mintNumber * mintPrice;
+        let price = (mintPrice*mintNumber).toString().slice(0,5);
         contract.methods
           .mintForSelf(mintNumber)
           .send({ from: account, value: utils.toWei(price.toString(), "ether") })
@@ -322,7 +342,7 @@ function Home() {
                 Looks like you're not in the pre-sale list. Please wait for the public launch to mint the flowers
             </p>
         )}
-        {active && (whitelist && whitelist.isWhiteListed) && (
+        {active && whitelist && whitelist.isWhiteListed && (
             <div>
                 <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                     Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint one for yourself or for a friend. 
@@ -549,7 +569,7 @@ function Home() {
                 </div>
                 <div className="flex items-center flex-row w-full md:max-w-4xl mx-auto text-xl text-left">
                     <div className="flex flex-col items-center justify-center w-full">
-                        <div className="flex w-full flex-col md:flex-row items-center justify-center md:space-x-2 mt-2 p-8">
+                        <div className="flex w-full flex-col md:flex-row items-center justify-center md:space-x-2 mt-2 px-8 pt-8 pb-2">
                             {mintFriend && (
                                 <input
                                     ref={friendField}
@@ -565,8 +585,8 @@ function Home() {
                             <MintButton
                                 disabled={working || mintDisabled}
                                 onClick={mintFriend? mintForFriend : mintForSelf}
-                                className={mintFriend ? "p-2 mt-4 md:mt-0 justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white w-54 text-black px-8 py-3 cursor-pointer" :
-                                "p-2 mt-4 md:mt-0  justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white w-72 text-black px-8 py-3 cursor-pointer"}
+                                className={mintFriend ? "p-2 mt-4 md:mt-0 justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white min-w-full md:min-w-0  text-black px-8 py-3 cursor-pointer" :
+                                "p-2 mt-4 md:mt-0  justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white min-w-full md:min-w-0  text-black px-8 py-3 cursor-pointer"}
                                 >
                                 <em>{mintButtonText}</em>
                             </MintButton>
@@ -580,11 +600,13 @@ function Home() {
                             <em>{mintFriend? 'Mint for yourself' : 'Mint for a friend'}</em>
                         </p>
                         {transactionHash && (
-                        <div className="text-green-500 text-xl font-normal mt-4">
-                            <span>Yay ✨ Successfully minted your flower!</span>
+                        <div className="text-green-500 text-xl font-normal mt-4 text-center">
+                            <span>{mintFriend? '✨ Successfully gifted a flower! ✨' : '✨ Successfully minted your flower! ✨'}</span>
+                            <br/>
                             <a
                             href={`https://etherscan.io/tx/${transactionHash}`}
-                            className="font-normal underline"
+                            target="_blank"
+                            className="font-normal text-sm cursor-pointer hover:underline"
                             >
                             View on Etherscan
                             </a>
@@ -605,7 +627,7 @@ function Home() {
             </div>
         )}
 
-{/* 
+
 
         <div className="mt-10 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
             <div className="w-full rounded-2xl p-4">
@@ -617,7 +639,7 @@ function Home() {
             <div className="w-full rounded-2xl p-4">
                 <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
-        </div> */}
+        </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
             <ul>
                 <li><h3 className="quotes text-xl">“There are always flowers for those who want to see them” ~ Henri Matisse</h3></li>
