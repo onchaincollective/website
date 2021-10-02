@@ -13,13 +13,17 @@ import Link from 'next/link'
 
 const contractAddress =
   process.env.NODE_ENV === "production"
-    ? "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C"
-    : "0xb3AC4965a94B87c9B6Ab63c3338aE2Dd7a17334C";
+    ? "0x7c4fa5211c232D3c7D156253D3538E36Bf3931E2"
+    : "0x7c4fa5211c232D3c7D156253D3538E36Bf3931E2";
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
   infuraId: "6041be06ca6b4e848a530e495d66e45d",
 });
+
+delete wcConnector.__proto__.request;
+wcConnector.hasOwnProperty("request") && delete wcConnector.request;
+
 
 const defaultMintPrice = 0.025;
 
@@ -27,7 +31,712 @@ function getLibrary(provider) {
   return new Web3(provider);
 }
 
-const abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"uint256","name":"_claimAmount","type":"uint256"},{"internalType":"address[]","name":"entries","type":"address[]"}],"name":"addToWhitelist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"allSalesPaused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"enablePublicSale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxMint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxPerAddress","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"walletAddress","type":"address"},{"internalType":"uint256","name":"amountOfTokens","type":"uint256"}],"name":"mintForFriend","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amountOfTokens","type":"uint256"}],"name":"mintForSelf","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numTokensMinted","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"price","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"privateSaleIsActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address[]","name":"entries","type":"address[]"}],"name":"removeFromWhitelist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxMint","type":"uint256"}],"name":"setMaxMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxPerAddress","type":"uint256"}],"name":"setMaxPerAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxSupply","type":"uint256"}],"name":"setMaxSupply","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newPrice","type":"uint256"}],"name":"setPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"toggleAllSalesPaused","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_addr","type":"address"}],"name":"whitelistInfoFor","outputs":[{"internalType":"bool","name":"isWhiteListed","type":"bool"},{"internalType":"uint256","name":"numHasMinted","type":"uint256"},{"internalType":"uint256","name":"allottedMints","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"payable","type":"function"}]
+const abi = [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_claimAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address[]",
+          "name": "entries",
+          "type": "address[]"
+        }
+      ],
+      "name": "addToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "allSalesPaused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "enablePublicSale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        }
+      ],
+      "name": "isApprovedForAll",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxMint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxPerAddress",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "walletAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountOfTokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintForFriend",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amountOfTokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "mintForSelf",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_addr",
+          "type": "address"
+        }
+      ],
+      "name": "mintedInfoFor",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "numHasMinted",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "numTokensMinted",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "price",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "privateSaleIsActive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "entries",
+          "type": "address[]"
+        }
+      ],
+      "name": "removeFromWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newMaxMint",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMaxMint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newMaxPerAddress",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMaxPerAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPrice",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "toggleAllSalesPaused",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenOfOwnerByIndex",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_addr",
+          "type": "address"
+        }
+      ],
+      "name": "whitelistInfoFor",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isWhiteListed",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "numHasMinted",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "allottedMints",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawAll",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ]
 
 
 export default function WrappedHome() {
@@ -40,8 +749,9 @@ export default function WrappedHome() {
 
 function Home() {
     const { activate, active, account, library } = useWeb3React();
-
     const [working, setWorking] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [transactionReceipt, setTransactionReceipt] = useState(false);
     const [maxMintPerTransaction, setMaxMintPerTransaction] = useState(0);
     const [mintPrice, setMintPrice] = useState(defaultMintPrice);
     const [privateSaleIsActive, setPrivateSaleIsActive] = useState(false);
@@ -70,7 +780,7 @@ function Home() {
 
     useEffect(() => {
         if (!library) return;
-        console.log(account)
+        console.log("Fetching details for account: ", account)
         const contract = new library.eth.Contract(abi, contractAddress);
 
         setContract(contract);
@@ -130,7 +840,8 @@ function Home() {
         }, handleError);
 
         contract.methods
-        .balanceOf(account)
+        .mintedInfoFor(account)
+        // .balanceOf(account)
         .call()
         .then((res) => {
         setTokensMintedPerAddress(parseInt(res));
@@ -144,59 +855,84 @@ function Home() {
         console.log(res);
         }, handleError);
 
-
         setWorking(false);
         
-    }, [account]);
+    }, [account, loading]);
 
 
     useEffect(() => {
         console.log("use effect called");
         console.log("Working: ", working);
         console.log("SalesPaused: ", salesPaused);
-        // console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
+        console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
         console.log("Max Mint Per Address: ", maxPerAddress);
         console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
-        // console.log("Mint Number: ", mintNumber);
-        // console.log("maxSupply: ", maxSupply);
-        // console.log("totalSupply: ", totalSupply);
-        // console.log("mintNumber: ", mintNumber);
+        console.log("Mint Number: ", mintNumber);
+        console.log("maxSupply: ", maxSupply);
+        console.log("is Whitlisted: ", whitelist && whitelist.isWhiteListed);
+        console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
+        console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
+        console.log("mintNumber: ", mintNumber);
         console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
         console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
         console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
-        console.log("(whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))", (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))));
+        console.log("((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints)))", (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints))));
         console.log("privateSaleIsActive", privateSaleIsActive);
 
-        mintFriend ? 
+        mintFriend ?
         setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
         setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`);
-        
 
         if (salesPaused) {
             setMintButtonText("Minting is paused right now");
-        } else if (totalSupply >= maxSupply) {
-            setMintButtonText("Minting has ended");
-        } else if (((totalSupply + mintNumber) > maxSupply)) {
-            setMintButtonText("Minting will exceed max supply");
-        } else if ((mintNumber > maxMintPerTransaction)) {
-            setMintButtonText("Reached max limit per transaction");
-        } else if ((tokensMintedPerAddress > maxPerAddress) || ((tokensMintedPerAddress + mintNumber) > maxPerAddress)) {
-            setMintButtonText("Max mint per wallet exceeded");
-        }
-        setMintDisabled(
-            working || 
-            salesPaused ||
-            (totalSupply >= maxSupply ) || 
-            ((totalSupply + mintNumber) > maxSupply) || 
-            (mintNumber > maxMintPerTransaction) || 
-            (tokensMintedPerAddress > maxPerAddress) || 
-            ((tokensMintedPerAddress + mintNumber) > maxPerAddress) ||
-            (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
-        )
+            setMintDisabled(salesPaused);
+        } else {
+            if (totalSupply >= maxSupply) {
+                setMintButtonText("Minting has ended");
+            } else if (((totalSupply + mintNumber) > maxSupply)) {
+                setMintButtonText("Minting will exceed max supply");
+            } else if ((mintNumber > maxMintPerTransaction)) {
+                setMintButtonText("Reached max limit per transaction");
+            } else if ((tokensMintedPerAddress + mintNumber) > maxPerAddress) {
+                setMintButtonText("Max mint per wallet exceeded");
+            } else if (mintNumber < 1) {
+                setMintButtonText("You need to mint atleast 1");
+            }
 
-        if (privateSaleIsActive && (whitelist && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))) {
-            setMintButtonText("Max mint per wallet exceeded");
-        }
+            setMintDisabled(
+                working || 
+                (totalSupply >= maxSupply ) || 
+                ((totalSupply + mintNumber) > maxSupply) || 
+                (mintNumber > maxMintPerTransaction) || 
+                ((tokensMintedPerAddress + mintNumber) > maxPerAddress) || 
+                (mintNumber < 1)
+            )
+
+            if (privateSaleIsActive) {
+                if (totalSupply >= maxSupply) {
+                    setMintButtonText("Minting has ended");
+                } else if (((totalSupply + mintNumber) > maxSupply)) {
+                    setMintButtonText("Minting will exceed max supply");
+                } else if ((mintNumber > maxMintPerTransaction)) {
+                    setMintButtonText("Reached max limit per transaction");
+                } else if ((tokensMintedPerAddress + mintNumber) > maxPerAddress) {
+                    setMintButtonText("Max mint per wallet exceeded");
+                } else if (mintNumber < 1) {
+                    setMintButtonText("You need to mint atleast 1");
+                } else if (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
+                    setMintButtonText("Max mint per wallet exceeded in whitelist");
+                    setMintDisabled(
+                        working || 
+                        (totalSupply >= maxSupply ) || 
+                        ((totalSupply + mintNumber) > maxSupply) || 
+                        (mintNumber > maxMintPerTransaction) || 
+                        ((tokensMintedPerAddress + mintNumber) > maxPerAddress) || 
+                        (mintNumber < 1) ||
+                        (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
+                    )
+                } 
+            }
+        } 
 
         console.log(mintDisabled);
 
@@ -215,7 +951,6 @@ function Home() {
         mintFriend ?
             setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
             setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`)
-        
     }, [mintFriend])
     
     
@@ -235,35 +970,75 @@ function Home() {
     function handleError(err) {
         console.error(err);
         setWorking(false);
+        setLoading(false);
         setError(err);
     }
     
     function mintForSelf() {
+        setLoading(true);
         setWorking(true);
+        setError(null);
+        setTransactionHash(null);
+        setTransactionReceipt(null);
         console.log("Mint number" + mintNumber);
         let price = (mintPrice*mintNumber).toString().slice(0,5);
+
         contract.methods
-          .mintForSelf(mintNumber)
-          .send({ from: account, value: utils.toWei(price.toString(), "ether") })
-          .then((res) => {
+            .mintForSelf(mintNumber)
+            .send({ from: account, value: utils.toWei(price.toString(), "ether") })
+            .on("transactionHash", (txHash) => {
+                console.log(txHash);
+                getTransactionReceiptMined(txHash, 1000);
+            })
+            .then((res) => {
             console.log(res);
             setWorking(false);
+            setLoading(false);
             setTransactionHash(res.transactionHash);
-          }, handleError);
+            }, handleError);
     }
-    
+
+    function getTransactionReceiptMined(txHash, interval) {
+        const transactionReceiptAsync = (resolve, reject) => {
+            library.eth.getTransactionReceipt(txHash, (error, receipt) => {
+                console.log("++++++++++++++++");
+                console.log(receipt);
+                if (error) {
+                    reject(error);
+                } else if (receipt == null) {
+                    setTimeout(() => transactionReceiptAsync(resolve, reject), 1000);
+                } else {
+                    setTransactionReceipt(receipt);
+                    setLoading(false);
+                    resolve(receipt);
+                }
+            });
+        };
+
+        if (typeof txHash === "string") {
+            return new Promise(transactionReceiptAsync);
+        } else {
+            setLoading(false);
+            throw new Error("Invalid Type: " + txHash);
+        }
+    };
+
     function mintForFriend() {
         if (!realFriendAddress) {
           friendField.current.focus();
         }
-    
+        setError(null);
+        setLoading(true);
         setWorking(true);
-        let price = mintNumber * mintPrice;
+        setTransactionHash(null);
+        setTransactionReceipt(null);
+        let price = (mintPrice*mintNumber).toString().slice(0,5);
         contract.methods
           .mintForFriend(realFriendAddress, mintNumber)
           .send({ from: account, value: utils.toWei(price.toString(), "ether") })
           .then((res) => {
             setWorking(false);
+            setLoading(false);
             setTransactionHash(res.transactionHash);
           }, handleError);
     }
@@ -277,6 +1052,14 @@ function Home() {
     
         setWorking(false);
     }, 1000);
+
+    wcConnector.on("session_update", async (error, payload) => {
+        console.log(`connector.on("session_update")`);
+        console.log(payload);
+        if (error) {
+          throw error;
+        }
+    });
     
 
   return (
@@ -337,12 +1120,17 @@ function Home() {
                 <ConnectButtons setWorking={setWorking} activate={activate} />
             </div>
         )}
-        {active && (whitelist && !whitelist.isWhiteListed) && (
+        {/* <div className="btn rounded-full flex justify-center space-x-2 images-center shadow-md border-2 w-52 h-14 text-base font-normal m-2"
+            onClick={withdrawStuff}>
+            Withdraw
+        </div> */}
+        {active && privateSaleIsActive && (whitelist && !whitelist.isWhiteListed) && (
             <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                 Looks like you're not in the pre-sale list. Please wait for the public launch to mint the flowers
             </p>
         )}
-        {active && whitelist && whitelist.isWhiteListed && (
+
+        {active && (privateSaleIsActive ? (whitelist && whitelist.isWhiteListed) : true) && (
             <div>
                 <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                     Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint one for yourself or for a friend. 
@@ -579,29 +1367,30 @@ function Home() {
                                     setFriendAddress(event.target.value);
                                     }}
                                     disabled={false}
-                                    placeholder={"0x… or ENS domain"}
+                                    placeholder={"Your friend's wallet address"}
                                 />
                             )}
                             <MintButton
-                                disabled={working || mintDisabled}
+                                disabled={working || mintDisabled || loading}
                                 onClick={mintFriend? mintForFriend : mintForSelf}
                                 className={mintFriend ? "p-2 mt-4 md:mt-0 justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white min-w-full md:min-w-0  text-black px-8 py-3 cursor-pointer" :
                                 "p-2 mt-4 md:mt-0  justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white min-w-full md:min-w-0  text-black px-8 py-3 cursor-pointer"}
                                 >
-                                <em>{mintButtonText}</em>
+                                <em>{loading ? "minting now" : mintButtonText}</em>
                             </MintButton>
                         </div>
                         <p  className="text-lg cursor-pointer text-center opacity-50 hover:underline hover:opacity-100 disabled:cursor-not-allowed"
                             onClick={() => {
                                 setMintFriend(!mintFriend);
                             }}
-                            hidden={salesPaused}
+                            hidden={salesPaused || loading}
                             >
                             <em>{mintFriend? 'Mint for yourself' : 'Mint for a friend'}</em>
                         </p>
-                        {transactionHash && (
+                        {!error && (transactionHash || transactionReceipt) && (
                         <div className="text-green-500 text-xl font-normal mt-4 text-center">
-                            <span>{mintFriend? '✨ Successfully gifted a flower! ✨' : '✨ Successfully minted your flower! ✨'}</span>
+                            <p>🌺👃🌺 </p>
+                            <span>{mintFriend? 'Your friend has received the flowers ' : 'Your flowers have bloomed'}</span>
                             <br/>
                             <a
                             href={`https://etherscan.io/tx/${transactionHash}`}
