@@ -66,7 +66,18 @@ export default function Home() {
                 <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/leftflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+                <object data="/flowers/4.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+                <object data="/flowers/5.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+            </div>
+        </div>
+        <div className="mt-2 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
+            <div className="w-full rounded-2xl p-4">
+                <object data="/flowers/3.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+                <object data="/flowers/7.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
                 <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
