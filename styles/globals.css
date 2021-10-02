@@ -107,6 +107,7 @@ input, label {
 
 .whitelist-logo {
   font-weight: 600;
+  letter-spacing: -0.04em;
   @apply crimson;
 }
 

@@ -58,7 +58,7 @@ export default function Home() {
                 </header>
                 <h3 className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share</h3>
                 <p className="mt-2 text-xl">Minting starts from 4th Oct 15:00 UTC ⬩ 0.025 eth</p>
-                <p className="mt-2 text-xl">Pre-sales 2hrs before the public sale</p>
+                <p className="mt-2 text-xl">Pre-sales 2hrs before the public launch</p>
                 <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
                 <span className="hover:underline"><Link href="/whitelist-checker">here</Link></span>&nbsp;to see if you've made it ✨</p>
             </div>
@@ -136,6 +136,9 @@ export default function Home() {
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
             <div className="text-md ">
+            <Link href="/faqs">
+                <p className="hover:underline inline-flex cursor-pointer">faqs</p>
+            </Link>{" "}&bull;{" "}
             <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
                 twitter
             </a>{" "}
