@@ -47,8 +47,21 @@ export default function Home() {
                 }}
             />
         </Head>
-      
-        <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
+
+        <div className="flex items-center flex-col max-w-2xl mx-auto text-center p-4 mt-8">
+            <Link href="/flowers">
+                <header className="text-3xl font-snell ml-8 cursor-pointer">
+                    flowers
+                </header>
+            </Link>
+            <div className="flex items-center flex-row justify-center max-w-4xl mx-auto text-xl text-left md:p-4 p-6">
+                <img src="/flowers/faq2.png" className="w-20 mt-4 mr-8 hidden md:inline-flex" />
+                <h3 className="text-7xl whitelist-logo">the faqs &nbsp;</h3>
+                <img src="/flowers/faq1.png" className="w-16 mt-4 ml-6 hidden md:inline-flex" />
+            </div>
+        </div>
+    
+        {/* <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
             <div className="mt-10">
                 <Link href="/">
                     <p className="text-sm mt-8 opacity-50 cursor-pointer">occ <span className="text-xs">#1</span></p>
@@ -57,12 +70,7 @@ export default function Home() {
                     flowers
                 </header>
             </div>
-        </div>
-        <div className="flex items-center flex-row justify-center max-w-4xl mx-auto text-xl text-left mt-8 md:p-4 p-6">
-            <img src="/flowers/faq2.png" className="w-20 mt-4 mr-8 hidden md:inline-flex" />
-            <h3 className="text-7xl whitelist-logo">the faqs &nbsp;</h3>
-            <img src="/flowers/faq1.png" className="w-16 mt-4 ml-6 hidden md:inline-flex" />
-        </div>
+        </div> */}
         <div className="flex flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
             <h1 className="text-xl items-left crimson-pro">When is the mint?</h1>
             <p className="mt-2 opacity-90">
