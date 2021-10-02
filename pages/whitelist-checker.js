@@ -266,7 +266,16 @@ export default function Home() {
     "0xCDc722CC2f47d95f9621F1cFbe867A09688d61a5",
     "0x69432E7f7CC99aaa93609B87EC4e986B2FF5Fe4d",
     "0x2dDDe30552089Dc7F0645Ac703F7D5eDeb25FFa0",
-    "0xEc8E08dA68e0d9f1769a45896c4fCB2bBf5B8756"];
+    "0xEc8E08dA68e0d9f1769a45896c4fCB2bBf5B8756",
+    "0x380E5b655d459A0cFa6fa2DFBbE586bf40DcFd7F",
+    "mintface.eth",
+    "veekay.eth",
+    "0x3bCB6f563D24cCAeF05798cB43d8103b84028B97",
+    "mal1.eth",
+    "0x790D9Bb483Ae50773BF339757b9BFeB02C684ea6",
+    "0x22A676B52392591bC6c7caf51c14b38f5e0F3716",
+    "seamb.eth",
+    "0x114C0b8A64b440ffaE0641210D759B9319A45D17"];
 
     let addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
