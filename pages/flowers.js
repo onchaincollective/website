@@ -56,8 +56,10 @@ export default function Home() {
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
                 </header>
-                <h3 className="mt-8 text-xl">Fully on-chain generative NFTs for you to own, or to share</h3>
-                <p className="mt-2 text-xl">✨ Pre-sale whitelisting has ended. Click&nbsp;
+                <h3 className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share</h3>
+                <p className="mt-2 text-xl">Minting starts from 4th Oct 15:00 UTC⬩ 0.025 eth</p>
+                <p className="mt-2 text-xl">Pre-sales 2hrs before the public sale</p>
+                <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
                 <span className="hover:underline"><Link href="/whitelist-checker">here</Link></span>&nbsp;to see if you've made it ✨</p>
             </div>
         </div>
@@ -127,16 +129,8 @@ export default function Home() {
                 some animated – Maybe some of them look familiar when you look outside your window.
             </p>
 
-            <h1 className="text-xl mt-16 crimson-pro">The mint details</h1>
-            <p className="mt-2 opacity-90">
-                Our genesis mint collection will be 4096 unique flowers with a mint price of 0.025 eth. We want our collectors to appreciate 
-                not just the art, but the underlying technology as well, and support the movement of on-chain NFTs. You'll be able to mint 
-                a flower for yourself, or for someone else. More on the mint date and exact time will be announced very soon.
-            </p>
-
             <em className="mt-8 text-lg opacity-90">
-                PS: Flowers is the first project for OCC Season 1. 
-                We'll share more details on Flowers, our team &amp; what's the deal with on-chain very soon. But first, we get back to work.
+                PS: Flowers is only the first project for OCC Season 1. 
             </em>
             <p className="mt-8">🌺👃🌺</p>
         </div>
