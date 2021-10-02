@@ -11,10 +11,7 @@ import { func } from "prop-types";
 import Link from 'next/link'
 
 
-const contractAddress =
-  process.env.NODE_ENV === "production"
-    ? "0x7c4fa5211c232D3c7D156253D3538E36Bf3931E2"
-    : "0x7c4fa5211c232D3c7D156253D3538E36Bf3931E2";
+const contractAddress = "0x5a876ffc6e75066f5ca870e20fca4754c1efe91f";
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
