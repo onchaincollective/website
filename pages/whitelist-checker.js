@@ -275,7 +275,8 @@ export default function Home() {
     "0x790D9Bb483Ae50773BF339757b9BFeB02C684ea6",
     "0x22A676B52392591bC6c7caf51c14b38f5e0F3716",
     "seamb.eth",
-    "0x114C0b8A64b440ffaE0641210D759B9319A45D17"];
+    "0x114C0b8A64b440ffaE0641210D759B9319A45D17",
+    "mihir.eth"];
 
     let addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
