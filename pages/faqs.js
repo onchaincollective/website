@@ -18,13 +18,13 @@ export default function Home() {
             <meta property="og:url" content="https://www.occ.xyz/flowers"/>
             <meta property="og:title" content="FAQs • Flowers"/>
             <meta property="og:description" content="FAQs for the OCC#1 Flowers"/>
-            <meta property="og:image" content="https://www.occ.xyz/flowers/social_image.png"/>
+            <meta property="og:image" content="https://www.occ.xyz/flowers/faqs_social.png"/>
 
             <meta property="twitter:card" content="summary_large_image"/>
             <meta property="twitter:url" content="https://www.occ.xyz/flowers"/>
             <meta property="twitter:title" content="FAQs • Flowers"/>
             <meta property="twitter:description" content="FAQs for the OCC#1 Flowers"/>
-            <meta property="twitter:image" content="https://www.occ.xyz/flowers/social_image.png"/>
+            <meta property="twitter:image" content="https://www.occ.xyz/flowers/faqs_social.png"/>
             <link rel="icon" href="/flowers/favicon.ico" sizes="any" />
             <link rel="icon" href="/flowers/icon.png" type="image/png" />
             <link rel="apple-touch-icon" href="/flowers/apple-touch-icon.png" />
