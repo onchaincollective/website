@@ -83,6 +83,17 @@ export default function Home() {
                 <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
         </div>
+        <div className="mt-2 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
+            <div className="w-full rounded-2xl p-4">
+                <object data="/flowers/9.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+                <img src="/flowers/10.png" className="w-full rounded-2xl"/>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+                <object data="/flowers/6.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+            </div>
+        </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
             <ul>
                 <li><h3 className="quotes text-xl">“There are always flowers for those who want to see them” ~ Henri Matisse</h3></li>
