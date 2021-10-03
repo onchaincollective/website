@@ -778,7 +778,7 @@ function Home() {
 
         setContract(contract);
 
-        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`);
+        setMintButtonText("Mint " + mintNumber + " flowers (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth total)`);
 
         contract.methods
         .price()
@@ -872,9 +872,8 @@ function Home() {
         console.log("((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints)))", (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints))));
         console.log("privateSaleIsActive", privateSaleIsActive);
 
-        mintFriend ?
-        setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
-        setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`);
+        
+        setMintButtonText("Mint " + mintNumber + (mintNumber === 1 ? " flower (" : " flowers (") + (mintPrice*mintNumber).toString().slice(0,5) + " eth total)");
 
         if (salesPaused) {
             setMintButtonText("Minting is paused right now");
@@ -941,25 +940,37 @@ function Home() {
         whitelist,
         mintFriend]);
 
-    // useEffect(() => {
-    //     mintFriend ?
-    //         setMintButtonText("Mint now (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`) :
-    //         setMintButtonText("Mint for yourself (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth)`)
-    // }, [mintFriend])
+
+    useEffect(() => {
+        if (isNaN(mintNumber)) {
+          setMintNumber("");
+        }
+    }, [mintNumber])
     
     
     useEffect(() => {
         if (!friendAddress) return;
-    
+
         if (friendAddress.match(/0x[a-fA-F0-9]{40}/)) {
           setRealFriendAddress(friendAddress);
           return;
         }
-    
+        
         if (friendAddress.match(/\./)) {
           debouncedLookup();
         }
     }, [friendAddress]);
+
+    const debouncedLookup = debounce(async () => {
+      setWorking(true);
+      try {
+        const address = await library.eth.ens.getAddress(friendAddress);
+        setRealFriendAddress(address);
+      } catch {}
+  
+        setWorking(false);
+    }, 1000);
+
     
     function handleError(err) {
         console.error(err);
@@ -1036,17 +1047,7 @@ function Home() {
             setTransactionHash(res.transactionHash);
           }, handleError);
     }
-    
-    const debouncedLookup = debounce(async () => {
-        setWorking(true);
-        try {
-          const address = await library.eth.ens.getAddress(friendAddress);
-          setRealFriendAddress(address);
-        } catch {}
-    
-        setWorking(false);
-    }, 1000);
-
+  
   return (
     <main className="occ-home">
         <Head>
@@ -1125,20 +1126,20 @@ function Home() {
                 <p className="text-center max-w-2xl mx-auto text-xl text-left mt-12 mb-4 md:px-4 px-6">
                     {totalSupply} / {maxSupply} 🌺 have been minted so far
                 </p>
-                <p className="text-center max-w-2xl mx-auto text-xl text-left md:px-4 px-6">
-                    Fully on-chain generative NFTs for you to own, or to share 🌼
+                <p className="text-center max-w-3xl mx-auto text-xl text-left md:px-4 px-6">
+                    Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
                     Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
                     The flower will be programmatically generated at the precise moment you mint it.
                 </p>
 
-                <div className="max-w-sm mx-auto text-center mt-8 h-16 md:px-4 px-6">
+                <div className="max-w-sm mx-auto text-center mt-12 h-16 md:px-4 px-6">
                     <div className="flex items-end flex-col items-end w-full"
                     onChange={(event) => {
                     setMintNumber(parseInt(event.target.value));
                     }}>
                         <input
                         name="answer"
-                        className="mint-qty-input flex"
+                        className="mint-qty-input flex text-md md:text-lg"
                         placeholder="Qty. (Max 12)"
                         min="1"
                         max="12"
@@ -1171,7 +1172,7 @@ function Home() {
                                 x1
                                 </label>
                             </div>
-                            <div className="radio mx-2">
+                            <div className="radio mx-1 md:mx-2">
                                 <input
                                 name="answer"
                                 type="radio"
@@ -1369,7 +1370,7 @@ function Home() {
                             onClick={mintFriend? mintForFriend : mintForSelf}
                             className={"mt-6 p-2 py-4 justify-center disabled:opacity-50 disabled:cursor-not-allowed mint-button text-xl bg-white w-full text-black px-8 cursor-pointer"}
                             >
-                            <em>{loading ? "minting now" : mintButtonText}</em>
+                            <em>{loading ? "Minting your flower now" : mintButtonText}</em>
                         </MintButton>
                         <p  className="mt-6 text-lg cursor-pointer text-center hover:underline hover:opacity-100 disabled:cursor-not-allowed"
                             onClick={() => {
@@ -1379,32 +1380,31 @@ function Home() {
                             >
                             <em>{mintFriend? 'Mint for yourself instead?' : 'Mint for a friend instead?'}</em>
                         </p>
-                        {!error && (transactionHash || transactionReceipt) && (
-                        <div className="text-green-500 text-xl font-normal mt-4 text-center">
-                            <p>🌺👃🌺 </p>
-                            <span>{mintFriend? 'Your friend has received the flowers ' : 'Your flowers have bloomed'}</span>
-                            <br/>
-                            <a
-                            href={`https://etherscan.io/tx/${transactionHash}`}
-                            target="_blank"
-                            className="font-normal text-sm cursor-pointer hover:underline"
-                            >
-                            View on Etherscan
-                            </a>
-                        </div>
-                        )}
-                        {error && (
-                            <div className="mt-8 text-center">
-                                <p className="text-red-500 text-xl font-normal mt-4">
-                                    {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
-                                    🥀 {error.message} 🥀 
-                                </p>
-                                {/* <a href={error.message.transactionHash} target="_blank" className="opacity-70"><em>view transaction</em></a> */}
-                            </div>
-                        )}
                     </div>
                 </div>
-
+                <div className="text-center max-w-2xl mx-auto text-xl mt-12 md:px-4 px-6">
+                  {!error && (transactionHash || transactionReceipt) && (
+                    <div className="text-green-500 text-xl font-normal mt-4 text-center">
+                        <p>🌺👃🌺 </p>
+                        <span>{mintFriend? 'Your friend has received the flowers ' : 'Your flowers have bloomed'}</span>
+                        <br/>
+                        <a
+                        href={`https://etherscan.io/tx/${transactionHash}`}
+                        target="_blank"
+                        className="font-normal text-sm cursor-pointer underline"
+                        >View on Etherscan</a>
+                    </div>
+                  )}
+                  {error && (
+                      <div className="mt-8 text-center">
+                          <p className="text-red-500 text-xl font-normal mt-4">
+                              {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
+                              🥀 {error.message} 🥀 
+                          </p>
+                          {/* <a href={error.message.transactionHash} target="_blank" className="opacity-70"><em>view transaction</em></a> */}
+                      </div>
+                  )}
+                </div>
             </div>
         )}
 

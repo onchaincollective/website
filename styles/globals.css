@@ -149,7 +149,6 @@ p {
   border-radius: 200px;
   padding: 0 20px;
   font-family: "crimson pro";
-  font-size: 18px;
   font-weight: 300;
   transition: 200ms all ease-in-out;
   outline: none;
@@ -172,7 +171,7 @@ p {
   font-size: 18px;
   font-weight: 300;
   transition: 200ms all ease-in-out;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .mint-options {
   margin-top: -53px;
