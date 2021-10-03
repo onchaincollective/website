@@ -130,6 +130,8 @@ export default function Home() {
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
             <div className="text-md ">
+            <p className="inline-flex">faqs</p>
+            {" "}&bull;{" "}
             <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
                 twitter
             </a>{" "}
