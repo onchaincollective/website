@@ -860,9 +860,10 @@ function Home() {
 
 
     useEffect(() => {
-        console.log("use effect called");
+        console.log("======================================");
         console.log("Working: ", working);
         console.log("SalesPaused: ", salesPaused);
+        console.log("privateSaleIsActive", privateSaleIsActive);
         console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
         console.log("Max Mint Per Address: ", maxPerAddress);
         console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
@@ -872,11 +873,10 @@ function Home() {
         console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
         console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
         console.log("mintNumber: ", mintNumber);
-        console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
-        console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
-        console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
-        console.log("((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints)))", (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints))));
-        console.log("privateSaleIsActive", privateSaleIsActive);
+        // console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
+        // console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
+        // console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
+        // console.log("((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints)))", (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints))));
 
         
         setMintButtonText("Mint " + mintNumber + (mintNumber === 1 ? " flower (" : " flowers (") + (mintPrice*mintNumber).toString().slice(0,5) + " eth total)");
