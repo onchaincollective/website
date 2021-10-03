@@ -279,7 +279,8 @@ export default function Home() {
     "mihir.eth",
     "0x10Bd2Ffe850cE960CCc5A114a4e5AD65aeAc0917",
     "0x434DeD09939b64CD76BAA81f9A394283D4C71F05",
-    "dheerajshah.eth"];
+    "dheerajshah.eth",
+    "0xa02Bfd4376C12983A9749e609B209A87Ed3E287c"];
 
     let addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
