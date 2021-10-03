@@ -22,8 +22,8 @@ const wcConnector = new WalletConnectConnector({
 const defaultMintPrice = 0.025;
 
 let currentTime = moment.utc();
-const publicSalesTime = moment.utc('10-03-2021 23:05:00');
-const preSalesTime = moment.utc('10-03-2021 23:00:00');
+const publicSalesTime = moment.utc('10-03-2021 23:15:00');
+const preSalesTime = moment.utc('10-03-2021 23:10:00');
 
 function getLibrary(provider) {
   return new Web3(provider);
