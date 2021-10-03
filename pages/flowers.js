@@ -1202,8 +1202,8 @@ function Home() {
             <p className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share <br className="hidden md:block"/>
             Minting starts from 4th Oct 17:00 UTC ⬩ 0.025 eth. <br className="hidden md:block"/>
             Pre-sales 2hrs before public sale. Checkout <Link href="/faqs"><span className="hover:cursor-pointer underline">the faqs</span></Link> </p>
-            <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
-            <span className="hover:underline"><Link href="/whitelist-checker"><span className="underline hover:cursor-pointer">here</span></Link></span>&nbsp;to see if you've made it ✨</p>
+            <p className="mt-2 text-lg mt-12">✨ Click&nbsp;
+            <span className="hover:underline"><Link href="/whitelist-checker"><span className="underline hover:cursor-pointer">here</span></Link></span>&nbsp;to check if you're on the pre-sale whitelist ✨</p>
           </div>
         )}
 
