@@ -924,6 +924,10 @@ function Home() {
                     )
                 } 
             }
+            
+            if (mintFriend && (friendAddress === '')) {
+              setMintDisabled(true);
+            }
         } 
 
         console.log(mintDisabled);
@@ -949,24 +953,33 @@ function Home() {
     
     
     useEffect(() => {
-        if (!friendAddress) return;
-
-        if (friendAddress.match(/0x[a-fA-F0-9]{40}/)) {
-          setRealFriendAddress(friendAddress);
+        if (!friendAddress) {
+          setMintDisabled(true);
           return;
-        }
-        
+        };
+
         if (friendAddress.match(/\./)) {
           debouncedLookup();
         }
+        console.log(friendAddress);
+        if (!library.utils.isAddress(friendAddress) || (friendAddress === '')) {
+          setMintDisabled(true);
+        } else {
+          setRealFriendAddress(friendAddress);
+          setMintDisabled(false);
+        }
+        
     }, [friendAddress]);
 
     const debouncedLookup = debounce(async () => {
       setWorking(true);
       try {
         const address = await library.eth.ens.getAddress(friendAddress);
+        console.log(address);
         setRealFriendAddress(address);
-      } catch {}
+      } catch {
+        setMintDisabled(true);
+      }
   
         setWorking(false);
     }, 1000);
@@ -1368,7 +1381,7 @@ function Home() {
                         </MintButton>
                         <p  className="mt-6 text-lg cursor-pointer text-center hover:underline hover:opacity-100 disabled:cursor-not-allowed"
                             onClick={() => {
-                                setMintFriend(!mintFriend);
+                              setMintFriend(!mintFriend);
                             }}
                             hidden={salesPaused || loading}
                             >
