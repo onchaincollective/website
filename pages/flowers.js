@@ -799,7 +799,7 @@ function Home() {
         console.log("Current Time", currentTime);
         console.log("pre-sales Time", preSalesTime);
 
-        fetch("https://worldtimeapi.org/api/timezone/Etc/UT")
+        fetch("https://worldtimeapi.org/api/timezone/Etc/UTC")
         .then(res => res.json())
         .then(
           (result) => {
