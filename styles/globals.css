@@ -106,36 +106,52 @@ p {
 .mint-button:hover {
   background-color: #e4e4e4;
 }
-.mint-qty {
-  border: 2px solid #5E5E5E;
-  width: 200px;
+.mint-qty-input, .friend-input {
+  border: 1px solid #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  min-width: 300px;
+  width: 100%;
   padding: 10px;
   height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 200px;
-  cursor: pointer;
   padding: 0 20px;
   font-family: "crimson pro";
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 300;
+  transition: 200ms all ease-in-out;
+  outline: none;
+}
+.mint-qty {
+  background: #474747;
+  border: 2px solid #474747;
+  border-radius: 20px;
+  width: 64px;
+  padding: 8px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 200px;
+  cursor: pointer;
+  /* padding: 0 8px; */
+  font-family: "crimson pro";
   font-style: italic;
+  font-size: 18px;
+  font-weight: 300;
   transition: 200ms all ease-in-out;
   opacity: 0.5;
 }
-.mint-qty:hover {
-  /* border: 2px solid #fff; */
-  opacity: 1;
+.mint-options {
+  margin-top: -53px;
+  margin-right: 12px;
 }
 .active {
   border: 2px solid #EED189;
   opacity: 1;
-}
-
-input {
-  background-color: white;
-  outline: none;
-  color: #000000;
 }
 input:focus {
   outline: none;
