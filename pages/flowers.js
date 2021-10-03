@@ -1016,6 +1016,11 @@ function Home() {
             }, handleError);
     }
 
+    function resetStates() {
+      setTransactionHash(null);
+      setError(null);
+    }
+
     function getTransactionReceiptMined(txHash, interval) {
         const transactionReceiptAsync = (resolve, reject) => {
             library.eth.getTransactionReceipt(txHash, (error, receipt) => {
