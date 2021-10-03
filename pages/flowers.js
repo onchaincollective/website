@@ -20,9 +20,10 @@ const wcConnector = new WalletConnectConnector({
 });
 
 const defaultMintPrice = 0.025;
+
 let currentTime = moment.utc();
-const publicSalesTime = moment.utc('10-03-2021 22:25:00');
-const preSalesTime = moment.utc('10-03-2021 22:20:00');
+const publicSalesTime = moment.utc('10-03-2021 22:35:00');
+const preSalesTime = moment.utc('10-03-2021 22:30:00');
 
 function getLibrary(provider) {
   return new Web3(provider);
@@ -806,6 +807,11 @@ function Home() {
             currentTime = moment.utc(result.datetime);
             console.log("Updated current time", currentTime);
             if (currentTime.isSameOrAfter(preSalesTime)) {
+              setSaleStart(true);
+              setPrivateSaleIsActive(true);
+            }
+            if (currentTime.isSameOrAfter(preSalesTime)) {
+              setSaleStart(true);
               setPrivateSaleIsActive(false);
             }
           },
