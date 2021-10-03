@@ -57,7 +57,7 @@ export default function Home() {
                     flowers
                 </header>
                 <h3 className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share</h3>
-                <p className="mt-2 text-xl">Minting starts from 4th Oct 15:00 UTC ⬩ 0.025 eth</p>
+                <p className="mt-2 text-xl">Minting starts from 4th Oct 17:00 UTC ⬩ 0.025 eth</p>
                 <p className="mt-2 text-xl">Pre-sales 2hrs before the public launch. Checkout <Link href="/faqs"><span className="hover:cursor-pointer hover:underline">the faqs</span></Link> </p>
                 <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
                 <span className="hover:underline"><Link href="/whitelist-checker"><span className="underline hover:cursor-pointer">here</span></Link></span>&nbsp;to see if you've made it ✨</p>
