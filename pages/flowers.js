@@ -930,8 +930,8 @@ function Home() {
                     )
                 } 
             }
-            
-            if (mintFriend && (friendAddress === '')) {
+
+            if (mintFriend && ((friendAddress === '') || !library.utils.isAddress(friendAddress))) {
               setMintDisabled(true);
             }
         } 
