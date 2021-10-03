@@ -278,7 +278,8 @@ export default function Home() {
     "0x114C0b8A64b440ffaE0641210D759B9319A45D17",
     "mihir.eth",
     "0x10Bd2Ffe850cE960CCc5A114a4e5AD65aeAc0917",
-    "0x434DeD09939b64CD76BAA81f9A394283D4C71F05"];
+    "0x434DeD09939b64CD76BAA81f9A394283D4C71F05",
+    "dheerajshah.eth"];
 
     let addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
