@@ -9,6 +9,7 @@ import cn from "classnames";
 import debounce from "debounce";
 import { func } from "prop-types";
 import Link from 'next/link'
+import moment from 'moment';
 
 
 const contractAddress = "0x2e4380cb794d61c9c465d137225c1535ea589f18";
@@ -19,6 +20,9 @@ const wcConnector = new WalletConnectConnector({
 });
 
 const defaultMintPrice = 0.025;
+let currentTime = moment.utc();
+const publicSalesTime = moment.utc('10-03-2021 22:25:00');
+const preSalesTime = moment.utc('10-03-2021 22:20:00');
 
 function getLibrary(provider) {
   return new Web3(provider);
@@ -731,6 +735,10 @@ const abi = [
     }
   ]
 
+const addresses = ["0x536F3129ABF1298a51898c6754925eDAFAaCc299",
+  "0xB1A3D9369201Cd48414Cc933407b6e8d3Ac6567a"]
+
+const addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
 export default function WrappedHome() {
     return (
@@ -742,14 +750,18 @@ export default function WrappedHome() {
 
 function Home() {
     const { activate, active, account, library } = useWeb3React();
+
+    const [privateSaleIsActive, setPrivateSaleIsActive] = useState(true);
+    const [isWhiteListed, setIsWhiteListed] = useState(false);
+    const [saleStart, setSaleStart] = useState(false);
+
     const [working, setWorking] = useState(false);
     const [loading, setLoading] = useState(false);
     const [transactionReceipt, setTransactionReceipt] = useState(false);
     const [maxMintPerTransaction, setMaxMintPerTransaction] = useState(0);
     const [mintPrice, setMintPrice] = useState(defaultMintPrice);
-    const [privateSaleIsActive, setPrivateSaleIsActive] = useState(true);
     const [tokensMintedPerAddress, setTokensMintedPerAddress] = useState(0);
-    const [whitelist, setWhitelist] = useState(null);
+    // const [whitelist, setWhitelist] = useState(null);
     const [maxPerAddress, setMaxPerAddress] = useState(0);
     const [mintButtonText, setMintButtonText] = useState("Mint for yourself");
     const [mintDisabled, setMintDisabled] = useState(false);
@@ -767,13 +779,41 @@ function Home() {
     const mintNumberField = useRef();
 
     useEffect( () => { 
-        document.querySelector("body").classList.remove("home"); 
+        document.querySelector("body").classList.remove("home");
         document.querySelector("body").classList.add("flowers");
     });
 
     useEffect(() => {
         if (!library) return;
+
         console.log("Fetching details for account: ", account)
+
+        // Checking for whitelist
+        checkWalletAddress(account);
+
+        // 4th OCT 15:00 UST - Pre-sales
+        // 4th OCT 17:00 UST - Public
+
+        // Checking for public sale time
+        console.log("Current Time", currentTime);
+        console.log("pre-sales Time", preSalesTime);
+
+        fetch("http://worldtimeapi.org/api/timezone/Etc/UTC")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            console.log(result);
+            currentTime = moment.utc(result.datetime);
+            console.log("Updated current time", currentTime);
+            if (currentTime.isSameOrAfter(preSalesTime)) {
+              setPrivateSaleIsActive(false);
+            }
+          },
+          (error) => {
+            console.log(error);
+          }
+        )
+
         const contract = new library.eth.Contract(abi, contractAddress);
 
         setContract(contract);
@@ -787,13 +827,13 @@ function Home() {
             setMintPrice(utils.fromWei(res,'ether'));
         }, handleError);
 
-        contract.methods
-        .privateSaleIsActive()
-        .call()
-        .then((res) => {
-          setPrivateSaleIsActive(res);
-          // setPrivateSaleIsActive(true);
-        }, handleError);
+        // contract.methods
+        // .privateSaleIsActive()
+        // .call()
+        // .then((res) => {
+        //   setPrivateSaleIsActive(res);
+        //   // setPrivateSaleIsActive(true);
+        // }, handleError);
 
         contract.methods
         .totalSupply()
@@ -841,18 +881,18 @@ function Home() {
         setTokensMintedPerAddress(parseInt(res));
         }, handleError);
 
-        contract.methods
-        .whitelistInfoFor(account)
-        .call()
-        .then((res) => {
-        setWhitelist(res);
-        // setWhitelist({
-        //   allottedMints: "0",
-        //   isWhiteListed: false,
-        //   numHasMinted: "0"
-        // });
-        console.log(res);
-        }, handleError);
+        // contract.methods
+        // .whitelistInfoFor(account)
+        // .call()
+        // .then((res) => {
+        // setWhitelist(res);
+        // // setWhitelist({
+        // //   allottedMints: "0",
+        // //   isWhiteListed: false,
+        // //   numHasMinted: "0"
+        // // });
+        // console.log(res);
+        // }, handleError);
 
         setWorking(false);
         
@@ -863,16 +903,15 @@ function Home() {
         console.log("======================================");
         console.log("Working: ", working);
         console.log("SalesPaused: ", salesPaused);
+        console.log("Pre-sales started: ", saleStart);
         console.log("privateSaleIsActive", privateSaleIsActive);
         console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
         console.log("Max Mint Per Address: ", maxPerAddress);
         console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
-        console.log("Mint Number: ", mintNumber);
         console.log("maxSupply: ", maxSupply);
-        console.log("is Whitlisted: ", whitelist && whitelist.isWhiteListed);
-        console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
-        console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
-        console.log("mintNumber: ", mintNumber);
+        console.log("is Whitlisted: ", isWhiteListed);
+        // console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
+        // console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
         // console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
         // console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
         // console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
@@ -906,30 +945,30 @@ function Home() {
                 (mintNumber < 1)
             )
 
-            if (privateSaleIsActive) {
-                if (totalSupply >= maxSupply) {
-                    setMintButtonText("Minting has ended");
-                } else if (((totalSupply + mintNumber) > maxSupply)) {
-                    setMintButtonText("Minting will exceed max supply");
-                } else if ((mintNumber > maxMintPerTransaction)) {
-                    setMintButtonText("Reached max limit per transaction");
-                } else if ((tokensMintedPerAddress + mintNumber) > maxPerAddress) {
-                    setMintButtonText("Max mint per wallet exceeded");
-                } else if (mintNumber < 1) {
-                    setMintButtonText("You need to mint atleast 1");
-                } else if (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
-                    setMintButtonText("Max mint per wallet exceeded in whitelist");
-                    setMintDisabled(
-                        working || 
-                        (totalSupply >= maxSupply ) || 
-                        ((totalSupply + mintNumber) > maxSupply) || 
-                        (mintNumber > maxMintPerTransaction) || 
-                        ((tokensMintedPerAddress + mintNumber) > maxPerAddress) || 
-                        (mintNumber < 1) ||
-                        (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
-                    )
-                } 
-            }
+            // if (privateSaleIsActive) {
+            //     if (totalSupply >= maxSupply) {
+            //         setMintButtonText("Minting has ended");
+            //     } else if (((totalSupply + mintNumber) > maxSupply)) {
+            //         setMintButtonText("Minting will exceed max supply");
+            //     } else if ((mintNumber > maxMintPerTransaction)) {
+            //         setMintButtonText("Reached max limit per transaction");
+            //     } else if ((tokensMintedPerAddress + mintNumber) > maxPerAddress) {
+            //         setMintButtonText("Max mint per wallet exceeded");
+            //     } else if (mintNumber < 1) {
+            //         setMintButtonText("You need to mint atleast 1");
+            //     } else if (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
+            //         setMintButtonText("Max mint per wallet exceeded in whitelist");
+            //         setMintDisabled(
+            //             working || 
+            //             (totalSupply >= maxSupply ) || 
+            //             ((totalSupply + mintNumber) > maxSupply) || 
+            //             (mintNumber > maxMintPerTransaction) || 
+            //             ((tokensMintedPerAddress + mintNumber) > maxPerAddress) || 
+            //             (mintNumber < 1) ||
+            //             (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints)))
+            //         )
+            //     } 
+            // }
 
             if (mintFriend && ((friendAddress === '') || !library.utils.isAddress(friendAddress))) {
               setMintDisabled(true);
@@ -947,7 +986,6 @@ function Home() {
         maxPerAddress, 
         tokensMintedPerAddress,
         privateSaleIsActive,
-        whitelist,
         mintFriend]);
 
 
@@ -1071,6 +1109,15 @@ function Home() {
             setTransactionHash(res.transactionHash);
           }, handleError);
     }
+
+    function checkWalletAddress(walletAddress) {
+      console.log(walletAddress);
+      if (addressesLowerCase.includes(walletAddress.toLowerCase())) {
+          setIsWhiteListed(true);
+      } else if (!addresses.includes(walletAddress.toLowerCase())) {
+          setIsWhiteListed(false);
+      }
+    }
   
   return (
     <main className="occ-home">
@@ -1123,6 +1170,7 @@ function Home() {
                 </header>
             </div>
         </div>
+
         
         {!active && (
             <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 pb-4">
@@ -1133,7 +1181,17 @@ function Home() {
             onClick={withdrawStuff}>
             Withdraw
         </div> */}
-        {active && privateSaleIsActive && (whitelist && !whitelist.isWhiteListed) && (
+        {active && !saleStart && (
+          <div className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
+            <p className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share <br className="hidden md:block"/>
+            Minting starts from 4th Oct 17:00 UTC ⬩ 0.025 eth. <br className="hidden md:block"/>
+            Pre-sales 2hrs before public sale. Checkout <Link href="/faqs"><span className="hover:cursor-pointer underline">the faqs</span></Link> </p>
+            <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
+            <span className="hover:underline"><Link href="/whitelist-checker"><span className="underline hover:cursor-pointer">here</span></Link></span>&nbsp;to see if you've made it ✨</p>
+          </div>
+        )}
+
+        {active && saleStart && privateSaleIsActive && !isWhiteListed && (
               <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                 Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
                 Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
@@ -1143,7 +1201,7 @@ function Home() {
               </p>
         )}
 
-        {active && (privateSaleIsActive ? (whitelist && whitelist.isWhiteListed) : true) && (
+        {active && saleStart && (privateSaleIsActive ? isWhiteListed : true) && (
             <div>
                 <p className="text-center max-w-2xl mx-auto text-xl text-left mt-12 mb-4 md:px-4 px-6">
                     {totalSupply} / {maxSupply} 🌺 have been minted so far
@@ -1532,6 +1590,7 @@ function ConnectButtons({ activate, setWorking }) {
         <div className="flex flex-col md:flex-row items-center justify-center">
           <button
             onClick={() => {
+              // setIsWhiteListed(true);
               setWorking(true);
               activate(injected);
             }}
