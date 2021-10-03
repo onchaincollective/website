@@ -747,7 +747,7 @@ function Home() {
     const [transactionReceipt, setTransactionReceipt] = useState(false);
     const [maxMintPerTransaction, setMaxMintPerTransaction] = useState(0);
     const [mintPrice, setMintPrice] = useState(defaultMintPrice);
-    const [privateSaleIsActive, setPrivateSaleIsActive] = useState(false);
+    const [privateSaleIsActive, setPrivateSaleIsActive] = useState(true);
     const [tokensMintedPerAddress, setTokensMintedPerAddress] = useState(0);
     const [whitelist, setWhitelist] = useState(null);
     const [maxPerAddress, setMaxPerAddress] = useState(0);
@@ -791,7 +791,8 @@ function Home() {
         .privateSaleIsActive()
         .call()
         .then((res) => {
-            setPrivateSaleIsActive(res);
+          setPrivateSaleIsActive(res);
+          // setPrivateSaleIsActive(true);
         }, handleError);
 
         contract.methods
@@ -845,6 +846,11 @@ function Home() {
         .call()
         .then((res) => {
         setWhitelist(res);
+        // setWhitelist({
+        //   allottedMints: "0",
+        //   isWhiteListed: false,
+        //   numHasMinted: "0"
+        // });
         console.log(res);
         }, handleError);
 
@@ -1134,9 +1140,13 @@ function Home() {
             Withdraw
         </div> */}
         {active && privateSaleIsActive && (whitelist && !whitelist.isWhiteListed) && (
-            <p className="text-center max-w-4xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
-                Looks like you're not in the pre-sale list. Please wait for the public launch to mint the flowers
-            </p>
+              <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
+                Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
+                Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
+                The flower will be programmatically generated at the precise moment you mint it.
+                <br/><br/>
+                Looks like you're not in the pre-sale list. Public sale starts from 4th Oct 17:00 UTC
+              </p>
         )}
 
         {active && (privateSaleIsActive ? (whitelist && whitelist.isWhiteListed) : true) && (
