@@ -11,7 +11,7 @@ import { func } from "prop-types";
 import Link from 'next/link'
 
 
-const contractAddress = "0x2e4380cb794d61c9c465d137225c1535ea589f18";
+const contractAddress = "0xD431E7C7a5F5737988e61e23290Bc8620c4F2c63";
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
