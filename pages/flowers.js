@@ -22,8 +22,8 @@ const wcConnector = new WalletConnectConnector({
 const defaultMintPrice = 0.025;
 
 let currentTime = moment.utc();
-const publicSalesTime = moment.utc('10-03-2021 22:45:00');
-const preSalesTime = moment.utc('10-03-2021 22:40:00');
+const publicSalesTime = moment.utc('10-03-2021 23:05:00');
+const preSalesTime = moment.utc('10-03-2021 23:00:00');
 
 function getLibrary(provider) {
   return new Web3(provider);
@@ -799,13 +799,15 @@ function Home() {
         console.log("Current Time", currentTime);
         console.log("pre-sales Time", preSalesTime);
 
-        fetch("http://worldtimeapi.org/api/timezone/Etc/UTC")
+        fetch("https://worldtimeapi.org/api/timezone/Etc/UT")
         .then(res => res.json())
         .then(
           (result) => {
-            console.log(result);
-            currentTime = moment.utc(result.datetime);
-            console.log("Updated current time", currentTime);
+            console.log("success time API response", result);
+            if (result.datetime)  {
+              currentTime = moment.utc(result.datetime);
+              console.log("Updated current time", currentTime);
+            }
             if (currentTime.isSameOrAfter(preSalesTime)) {
               setSaleStart(true);
               setPrivateSaleIsActive(true);
@@ -816,7 +818,15 @@ function Home() {
             }
           },
           (error) => {
-            console.log(error);
+            console.log("Error time API response", error);
+            if (currentTime.isSameOrAfter(preSalesTime)) {
+              setSaleStart(true);
+              setPrivateSaleIsActive(true);
+            }
+            if (currentTime.isSameOrAfter(publicSalesTime)) {
+              setSaleStart(true);
+              setPrivateSaleIsActive(false);
+            }
           }
         )
 
