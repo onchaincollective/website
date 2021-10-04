@@ -101,7 +101,7 @@ export default function Home() {
             <h1 className="text-xl mt-16 crimson-pro">When will I be able to see the flowers?</h1>
             <p className="mt-2 opacity-90">
             There will be no reveals. All your flowers are listed (almost) immediately in Opensea after your transaction goes through
-            &nbsp; ➡️ &nbsp;<a href="https://opensea.io/collection/flowersonchain" target="_blank"><span className="inline-flex cursor-pointer hover:underline"><em>Opensea</em></span></a>
+            &nbsp; ➡️ &nbsp;<a href="https://opensea.io/collection/flowersonchain" target="_blank"><span className="inline-flex cursor-pointer hover:underline"><em>Opensea link</em></span></a>
             </p>
 
             <h1 className="text-xl mt-16 crimson-pro">How does minting work?</h1>
