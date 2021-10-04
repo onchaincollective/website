@@ -1,13 +1,11 @@
 import Head from "next/head";
 import { useEffect, useState, useRef } from "react";
 import Web3, { utils } from "web3";
-import WalletConnectProvider from "@walletconnect/web3-provider";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { Web3ReactProvider, useWeb3React } from "@web3-react/core";
 import cn from "classnames";
 import debounce from "debounce";
-import { func } from "prop-types";
 import Link from 'next/link'
 
 
@@ -1425,11 +1423,11 @@ function Home() {
                   )}
                   {error && (
                       <div className="mt-8 text-center">
-                          <p className="text-red-500 text-xl font-normal mt-4">
+                          <p className="text-white-500 text-xl font-normal mt-4">
                               {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
                               🥀 {error.message} 🥀 
                           </p>
-                          {/* <a href={error.message.transactionHash} target="_blank" className="opacity-70"><em>view transaction</em></a> */}
+                          <a href={error.message.transactionHash} target="_blank" className="opacity-70 underline hover:cursor-pointer"><em>view transaction</em></a>
                       </div>
                   )}
                 </div>
@@ -1439,11 +1437,8 @@ function Home() {
 
 
         <div className="mt-10 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
-            {/* <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/1.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
-            </div> */}
             <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/3.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+                <object data="/flowers/middleflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
                 <object data="/flowers/4.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
@@ -1460,21 +1455,7 @@ function Home() {
                 <object data="/flowers/7.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/5.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
-            </div>
-        </div>
-        <div className="mt-2 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
-            <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/6.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
-            </div>
-            <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/7.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
-            </div>
-            {/* <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/2.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
-            </div> */}
-            <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/8.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+                <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
         </div>
         <div className="mt-2 max-w-6xl mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease px-4">
@@ -1487,13 +1468,6 @@ function Home() {
             <div className="w-full rounded-2xl p-4">
                 <object data="/flowers/6.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
-        </div>
-        <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
-            <ul>
-                <li><h3 className="quotes text-xl">“There are always flowers for those who want to see them” ~ Henri Matisse</h3></li>
-                {/* <li><h3 className="quotes">“Every flower is a soul blossoming in nature” ~ Gerard De Nerwal</h3></li>
-                <li><h3 className="quotes">“In joy and in sadness, flowers are our constant friends” ~ Unknown</h3></li> */}
-            </ul>
         </div>
 
 
@@ -1511,7 +1485,7 @@ function Home() {
                 at the precise moment you mint it 🌼
             </p>
             
-            <h1 className="text-xl mt-16 crimson-pro">Let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
+            <h1 className="text-xl mt-16 crimson-pro">Now let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
             <p className="mt-2 opacity-90">
                 Why flowers you ask? Because flowers are pretty and why NOT? 
             </p>
