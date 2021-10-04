@@ -2,9 +2,16 @@ node_modules
 .next
 .env.local
 .DS_Store
+<<<<<<< HEAD
+<<<<<<< HEAD
 public/.DS_Store
 .DS_Store
 .DS_Store
 public/.DS_Store
 public/flowers/.DS_Store
 .DS_Store
+=======
+>>>>>>> 6bf33cb (Updates)
+=======
+public/.DS_Store
+>>>>>>> 38b5622 (matching with main)

@@ -98,9 +98,10 @@ export default function Home() {
             any responsibility for failed transactions or gas lost during such transactions from the contract.</em></span>
             </p>
 
-            <h1 className="text-xl mt-16 crimson-pro">Where is the opensea link?</h1>
+            <h1 className="text-xl mt-16 crimson-pro">When will I be able to see the flowers?</h1>
             <p className="mt-2 opacity-90">
-            When contract is open for sale, it'll be posted on our <Link href="/discord"><span className="inline-flex cursor-pointer hover:underline"><em>discord</em></span></Link>
+            There will be no reveals. All your flowers are listed (almost) immediately in Opensea after your transaction goes through
+            &nbsp; ➡️ &nbsp;<a href="https://opensea.io/collection/flowersonchain" target="_blank"><span className="inline-flex cursor-pointer hover:underline"><em>Opensea link</em></span></a>
             </p>
 
             <h1 className="text-xl mt-16 crimson-pro">How does minting work?</h1>
@@ -130,15 +131,25 @@ export default function Home() {
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
             <div className="text-md ">
-            <p className="inline-flex">faqs</p>
-            {" "}&bull;{" "}
-            <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
-                twitter
-            </a>{" "}
-            &bull;{" "}
-            <a href="https://discord.com/invite/BUCup66VKc" target="_blank" className="hover:underline">
-                discord
-            </a>{" "}
+              <Link href="/faqs">
+                  <p className="hover:underline inline-flex cursor-pointer">faqs</p>
+              </Link>
+              {" "}&bull;{" "}
+              <a href="https://etherscan.io/address/0x5a876ffc6e75066f5ca870e20fca4754c1efe91f" target="_blank" className="hover:underline">
+                  contract
+              </a>
+              {" "}&bull;{" "}
+              <a href="https://opensea.io/collection/flowersonchain" target="_blank" className="hover:underline">
+                  opensea
+              </a>
+              {" "}&bull;{" "}
+              <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
+                  twitter
+              </a>
+              {" "}&bull;{" "}
+              <a href="https://discord.com/invite/BUCup66VKc" target="_blank" className="hover:underline">
+                  discord
+              </a>
             </div>
         </div>
     </main>
