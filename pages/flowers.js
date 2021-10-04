@@ -1449,6 +1449,14 @@ function Home() {
             </div>
         </div>
 
+        <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 p-4">
+            <ul>
+                <li><h3 className="quotes text-xl">“There are always flowers for those who want to see them” ~ Henri Matisse</h3></li>
+                {/* <li><h3 className="quotes">“Every flower is a soul blossoming in nature” ~ Gerard De Nerwal</h3></li>
+                <li><h3 className="quotes">“In joy and in sadness, flowers are our constant friends” ~ Unknown</h3></li> */}
+            </ul>
+        </div>
+
 
         <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
             <p className="mt-2 opacity-90">
