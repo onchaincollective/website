@@ -1518,6 +1518,10 @@ function Home() {
                   <p className="hover:underline inline-flex cursor-pointer">faqs</p>
               </Link>
               {" "}&bull;{" "}
+              <a href="https://etherscan.io/address/0x5a876ffc6e75066f5ca870e20fca4754c1efe91f" target="_blank" className="hover:underline">
+                  contract
+              </a>
+              {" "}&bull;{" "}
               <a href="https://opensea.io/collection/flowersonchain" target="_blank" className="hover:underline">
                   opensea
               </a>
