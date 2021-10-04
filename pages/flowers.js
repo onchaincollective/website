@@ -1451,29 +1451,52 @@ function Home() {
 
 
         <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
-            <h1 className="text-xl crimson-pro">What is the On chain collective?</h1>
             <p className="mt-2 opacity-90">
-                OCC is more than a run-of-the-mill NFT art project. Our goal is to channel our love for art and technology, 
-                collaborate with other digital &amp; traditional artists, and use completely on-chain tech to make beautiful NFT collectibles that, 
-                hopefully, make you happy <span className="opacity-100">🌻</span> <br/>
-                Every NFT mint we do is 100% generated on-chain in the smart contract and lives on as an immutable ERC-721 token on the 
-                Ethereum Blockchain forever.
+            OCC#1 🌺 Flowers is a collection 4096 programatically generated on-chain flowers, for you to own or to share. 
+            Each flower is 100% generated on-chain, including it's metadata. No ipfs/arweave, no external rendering script. Just SVGs created by the contract.
             </p>
-            <p className="mt-4 opacity-90">
-                Our first mint (of season 1): flowers is a collection of beautiful flower NFTs that are programmatically generated 
-                at the precise moment you mint it 🌼
-            </p>
-            
-            <h1 className="text-xl mt-16 crimson-pro">Now let's talk Flowers <br className="block md:hidden"/><em>(our genesis mint ✨)</em></h1>
+
+            <h1 className="text-xl mt-16 crimson-pro">What is the roadmap?</h1>
             <p className="mt-2 opacity-90">
-                Why flowers you ask? Because flowers are pretty and why NOT? 
+              We are florists, and this is a flower shop. Buy art you like, appreciate &amp; resonate with. But if you care, the 1 in occ#1 is there for a reason.
             </p>
-            <p className="mt-4 opacity-90">
-                But serious answer – Flowers come in all shapes, sizes &amp; colours. They are the perfect canvas for our generative art 
-                tech to explore the boundaries of what one can do on-chain. Despite the fact that flowers are fully on-chain, they have 
-                predictable amounts of trait rarities built into the contract from which they are created. Few are super rare, 
-                some animated – Maybe some of them look familiar when you look outside your window.
+
+            <h1 className="text-xl mt-16 crimson-pro">What about the traits?</h1>
+            <p className="mt-2 opacity-90">
+            Again, ser, we've talked about this. This is a flower shop 💐 Some flowers are nice. Some are too nice. 
+            The rest, are just the right amount of nice. To keep, or to gift 🫂 Call your mom/dad/friend/lover, buy them a flower. Then explain to them what nfts are. 
+            Buuut if you really wanna know – we've put in an extensive amount of work in setting up numerous traits, 
+            with predictable amounts of rarities built into the contract 🧑‍🔬Check your flower on opensea, when minting starts. 
+            Since all flowers are randomly generated on-chain, we'll find out the precise rarities of your flower at the same time you do.
             </p>
+
+            <h1 className="text-xl mt-16 crimson-pro">What's on-chain?</h1>
+            <p className="mt-2 opacity-90">
+            Most recently popularized by the Loot Project, on-chain implies that the ingredients that make up your NFT art, 
+            its metadata, and the image/animation/etc. itself are generated and stored on the Ethereum blockchain – which to 
+            us is mind-blowing and fascinating. Other examples of this include Blitmap, Anonymice &amp; OnChainMonkey.
+            </p>
+            <p className="mt-2 opacity-90">
+              So.. what?
+            </p>
+            <p className="mt-2 opacity-90 italic">
+            "Most NFTs hold only the metadata and ownership information and then link to an external service for the actual asset. This is mostly fine, 
+            however the service storing that asset may disappear or the data go corrupt. Probably not, but maybe. Even if the (minting website) 
+            disappears at some point, (on-chain NFTs) will be around as long as the blockchain itself." – excerpt from cranes.supply
+            </p>
+
+            <h1 className="text-xl mt-16 crimson-pro">What is the On chain collective?</h1>
+            <p className="mt-2 opacity-90">
+            OCC is more than a run-of-the-mill NFT art project. Our goal is to channel our love for art and technology, collaborate with other digital 
+            &amp; traditional artists, and use completely on-chain tech to make beautiful NFT collectibles that, hopefully, make you happy 🌻Every NFT 
+            mint we do is 100% generated on-chain in the smart contract and lives on as an immutable ERC-721 token on the Ethereum Blockchain forever.
+            </p>
+
+            <p className="mt-2 opacity-90">
+            Our first mint (of season 1): flowers is a collection of beautiful flower NFTs that are programmatically generated at the precise moment 
+            you mint it 🌼
+            </p>
+
 
             <em className="mt-8 text-lg opacity-90">
                 PS: Flowers is only the first project for OCC Season 1. 
