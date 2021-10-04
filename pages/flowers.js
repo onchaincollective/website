@@ -11,7 +11,7 @@ import { func } from "prop-types";
 import Link from 'next/link'
 
 
-const contractAddress = "0xD431E7C7a5F5737988e61e23290Bc8620c4F2c63";
+const contractAddress = "0x5a876ffc6e75066f5ca870e20fca4754c1efe91f";
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const wcConnector = new WalletConnectConnector({
@@ -918,7 +918,7 @@ function Home() {
                 } else if (mintNumber < 1) {
                     setMintButtonText("You need to mint atleast 1");
                 } else if (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) > parseInt(whitelist.allottedMints))) {
-                    setMintButtonText("Max mint per wallet exceeded in whitelist");
+                    setMintButtonText("Max mint per wallet exceeded");
                     setMintDisabled(
                         working || 
                         (totalSupply >= maxSupply ) || 
@@ -1160,7 +1160,7 @@ function Home() {
                     The flower will be programmatically generated at the precise moment you mint it.
                 </p>
 
-                <div className="max-w-sm mx-auto text-center mt-12 h-16 md:px-4 px-6">
+                <div className="max-w-md mx-auto text-center mt-12 h-16 md:px-4 px-6">
                     <div className="flex items-end flex-col items-end w-full"
                     onChange={(event) => {
                     setMintNumber(parseInt(event.target.value));
@@ -1379,7 +1379,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center flex-row w-full md:max-w-sm mx-auto text-xl text-left md:px-4 px-6">
+                <div className="flex items-center flex-row w-full md:max-w-md mx-auto text-xl text-left md:px-4 px-6">
                     <div className="flex flex-col items-center w-full">
                         {mintFriend && (
                             <input
