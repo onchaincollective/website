@@ -5,7 +5,6 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { Web3ReactProvider, useWeb3React } from "@web3-react/core";
 import cn from "classnames";
-import debounce from "debounce";
 import Link from 'next/link'
 
 
@@ -769,6 +768,13 @@ function Home() {
         document.querySelector("body").classList.add("flowers");
     });
 
+    function getMintPrice (mintNumber, mintPrice) {
+      if (mintNumber === 12) {
+        return (mintPrice*mintNumber).toString().slice(0,3)
+      }
+      return (mintPrice*mintNumber).toString().slice(0,5)
+    }
+
     useEffect(() => {
         if (!library) return;
         console.log("Fetching details for account: ", account)
@@ -776,7 +782,7 @@ function Home() {
 
         setContract(contract);
 
-        setMintButtonText("Mint " + mintNumber + " flowers (" + (mintPrice*mintNumber).toString().slice(0,5) + ` eth total)`);
+        setMintButtonText("Mint " + mintNumber + " flowers (" + getMintPrice(mintNumber, mintPrice) + ` eth total)`);
 
         contract.methods
         .price()
@@ -877,7 +883,7 @@ function Home() {
         // console.log("((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints)))", (whitelist && whitelist.isWhiteListed && ((parseInt(whitelist.numHasMinted)+ mintNumber) >= parseInt(whitelist.allottedMints))));
 
         
-        setMintButtonText("Mint " + mintNumber + (mintNumber === 1 ? " flower (" : " flowers (") + (mintPrice*mintNumber).toString().slice(0,5) + " eth total)");
+        setMintButtonText("Mint " + mintNumber + (mintNumber === 1 ? " flower (" : " flowers (") + getMintPrice(mintNumber, mintPrice) + " eth total)");
 
         if (salesPaused) {
             setMintButtonText("Minting is paused right now");
@@ -934,7 +940,7 @@ function Home() {
             }
         } 
 
-        console.log(mintDisabled);
+        console.log("Mint Disabled", mintDisabled);
 
     }, [working, 
         totalSupply, 
@@ -954,7 +960,7 @@ function Home() {
           setMintNumber("");
         }
     }, [mintNumber])
-    
+
     
     useEffect(() => {
         if (!friendAddress) {
@@ -962,10 +968,6 @@ function Home() {
           return;
         };
 
-        if (friendAddress.match(/\./)) {
-          debouncedLookup();
-        }
-        console.log(friendAddress);
         if (!library.utils.isAddress(friendAddress) || (friendAddress === '')) {
           setMintDisabled(true);
         } else {
@@ -974,19 +976,6 @@ function Home() {
         }
         
     }, [friendAddress]);
-
-    const debouncedLookup = debounce(async () => {
-      setWorking(true);
-      try {
-        const address = await library.eth.ens.getAddress(friendAddress);
-        console.log(address);
-        setRealFriendAddress(address);
-      } catch {
-        setMintDisabled(true);
-      }
-  
-        setWorking(false);
-    }, 1000);
 
     
     function handleError(err) {
@@ -1020,11 +1009,6 @@ function Home() {
             setLoading(false);
             setTransactionHash(res.transactionHash);
             }, handleError);
-    }
-
-    function resetStates() {
-      setTransactionHash(null);
-      setError(null);
     }
 
     function getTransactionReceiptMined(txHash, interval) {
