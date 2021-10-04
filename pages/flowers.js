@@ -1105,6 +1105,11 @@ function Home() {
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
                 </header>
+
+                <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
+                Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
+                Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
+                The flower will be programmatically generated at the precise moment you mint it.</p>
             </div>
         </div>
         
@@ -1119,23 +1124,14 @@ function Home() {
         </div> */}
         {active && privateSaleIsActive && (whitelist && !whitelist.isWhiteListed) && (
               <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
-                Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
-                Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
-                The flower will be programmatically generated at the precise moment you mint it.
-                <br/><br/>
                 Looks like you're not in the pre-sale list. Public sale starts from 4th Oct 17:00 UTC
               </p>
         )}
 
         {active && (privateSaleIsActive ? (whitelist && whitelist.isWhiteListed) : true) && (
             <div>
-                <p className="text-center max-w-2xl mx-auto text-xl text-left mt-12 mb-4 md:px-4 px-6">
+                <p className="text-center max-w-2xl mx-auto text-xl text-left mt-4 mb-4 md:px-4 px-6">
                     {totalSupply} / {maxSupply} 🌺 have been minted so far
-                </p>
-                <p className="text-center max-w-3xl mx-auto text-xl text-left md:px-4 px-6">
-                    Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
-                    Each flower will cost you <em>0.025 eth + gas fees to mint.</em> You can mint for yourself or for a friend. 
-                    The flower will be programmatically generated at the precise moment you mint it.
                 </p>
 
                 <div className="max-w-md mx-auto text-center mt-12 h-16 md:px-4 px-6">
@@ -1435,7 +1431,7 @@ function Home() {
                 <object data="/flowers/3.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/7.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+                <object data="/flowers/6.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
             <div className="w-full rounded-2xl p-4">
                 <object data="/flowers/rightflower.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
@@ -1449,7 +1445,7 @@ function Home() {
                 <img src="/flowers/10.png" className="w-full rounded-2xl"/>
             </div>
             <div className="w-full rounded-2xl p-4">
-                <object data="/flowers/6.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
+                <object data="/flowers/8.svg" type="image/svg+xml" className="w-full rounded-2xl"></object>
             </div>
         </div>
 
