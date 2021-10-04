@@ -796,7 +796,7 @@ function Home() {
         .call()
         .then((res) => {
           setPrivateSaleIsActive(res);
-          // setPrivateSaleIsActive(true);
+          // setPrivateSaleIsActive(false);
         }, handleError);
 
         contract.methods
@@ -851,11 +851,11 @@ function Home() {
         .then((res) => {
         setWhitelist(res);
         // setWhitelist({
-        //   allottedMints: "0",
-        //   isWhiteListed: false,
-        //   numHasMinted: "0"
+        //   allottedMints: "12",
+        //   isWhiteListed: true,
+        //   numHasMinted: "12"
         // });
-        console.log(res);
+        // console.log(res);
         }, handleError);
 
         setWorking(false);
@@ -864,19 +864,19 @@ function Home() {
 
 
     useEffect(() => {
-        console.log("======================================");
-        console.log("Working: ", working);
-        console.log("SalesPaused: ", salesPaused);
-        console.log("privateSaleIsActive", privateSaleIsActive);
-        console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
-        console.log("Max Mint Per Address: ", maxPerAddress);
-        console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
-        console.log("Mint Number: ", mintNumber);
-        console.log("maxSupply: ", maxSupply);
-        console.log("is Whitlisted: ", whitelist && whitelist.isWhiteListed);
-        console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
-        console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
-        console.log("mintNumber: ", mintNumber);
+        // console.log("======================================");
+        // console.log("Working: ", working);
+        // console.log("SalesPaused: ", salesPaused);
+        // console.log("privateSaleIsActive", privateSaleIsActive);
+        // console.log("Max Mint Per Transaction: ", maxMintPerTransaction);
+        // console.log("Max Mint Per Address: ", maxPerAddress);
+        // console.log("Total tokens minted per addy: ", tokensMintedPerAddress);
+        // console.log("Mint Number: ", mintNumber);
+        // console.log("maxSupply: ", maxSupply);
+        // console.log("is Whitlisted: ", whitelist && whitelist.isWhiteListed);
+        // console.log("Whitelist numHasMinted: ", whitelist && whitelist.numHasMinted);
+        // console.log("Whitelist allottedMints: ", whitelist && whitelist.allottedMints);
+        // console.log("mintNumber: ", mintNumber);
         // console.log("totalSupply >= maxSupply", totalSupply >= maxSupply);
         // console.log("(totalSupply + mintNumber) > maxSupply", (totalSupply + mintNumber) > maxSupply);
         // console.log("(mintNumber > maxMintPerTransaction)", (mintNumber > maxMintPerTransaction));
@@ -940,7 +940,7 @@ function Home() {
             }
         } 
 
-        console.log("Mint Disabled", mintDisabled);
+        // console.log("Mint Disabled", mintDisabled);
 
     }, [working, 
         totalSupply, 
@@ -1114,7 +1114,7 @@ function Home() {
         </div>
         
         {!active && (
-            <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 pb-4">
+            <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-8 pb-4">
                 <ConnectButtons setWorking={setWorking} activate={activate} />
             </div>
         )}
@@ -1458,7 +1458,7 @@ function Home() {
         </div>
 
 
-        <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
+        <div className="flex align-center flex-col max-w-4xl mx-auto text-xl text-left mt-10 p-6">
             <p className="mt-2 opacity-90">
             OCC#1 🌺 Flowers is a collection 4096 programatically generated on-chain flowers, for you to own or to share. 
             Each flower is 100% generated on-chain, including it's metadata. No ipfs/arweave, no external rendering script. Just SVGs created by the contract.
