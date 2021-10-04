@@ -1124,7 +1124,7 @@ function Home() {
         </div> */}
         {active && privateSaleIsActive && (whitelist && !whitelist.isWhiteListed) && (
               <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
-                Looks like you're not in the pre-sale list. Public sale starts from 4th Oct 17:00 UTC
+                Looks like you're not in the pre-sale list. Public sale starts from 4th Oct 17:30 UTC <em>(delayed by 30mins due to abnormal gas price)</em>
               </p>
         )}
 

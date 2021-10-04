@@ -74,10 +74,10 @@ export default function Home() {
         <div className="flex flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
             <h1 className="text-xl items-left crimson-pro">When is the mint?</h1>
             <p className="mt-2 opacity-90">
-                Whitelist Presale : <b>4th of October at 15:00 UTC</b>
+                Whitelist Presale : <b>4th of October at 15:00 UTC</b> 
             </p>
             <p className="mt-2 opacity-90">
-                Public Sale : <b>4th of October at 17:00 UTC</b>
+                Public Sale : <b>4th of October at 17:30 UTC</b><em>(delayed due to abnormal gas price)</em>
             </p>
 
             <h1 className="text-xl mt-16 crimson-pro">Where can I mint?</h1>
