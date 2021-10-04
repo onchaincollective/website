@@ -1079,7 +1079,7 @@ function Home() {
             <link rel="apple-touch-icon" href="/flowers/apple-touch-icon.png" />
             <link rel="manifest" href="/manifest.webmanifest" />
             {/* Global Site Tag (gtag.js) - Google Analytics */}
-            {/* <script
+            <script
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=G-WBMC04PLCN`}
             />
@@ -1094,7 +1094,7 @@ function Home() {
                 });
             `,
                 }}
-            /> */}
+            />
         </Head>
       
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center p-4">
