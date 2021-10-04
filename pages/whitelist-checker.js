@@ -280,7 +280,9 @@ export default function Home() {
     "0x10Bd2Ffe850cE960CCc5A114a4e5AD65aeAc0917",
     "0x434DeD09939b64CD76BAA81f9A394283D4C71F05",
     "dheerajshah.eth",
-    "0xa02Bfd4376C12983A9749e609B209A87Ed3E287c"];
+    "0xa02Bfd4376C12983A9749e609B209A87Ed3E287c",
+    "0x34D7bCeaA2B3cfb1dE368BAA703683EDC666d3f1",
+    "0x9f7A9AFE223FE9ad573aAC7A127c23A952858D83"];
 
     let addressesLowerCase = addresses.map(function(v) {return v.toLowerCase();});
 
