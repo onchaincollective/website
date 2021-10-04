@@ -1502,10 +1502,6 @@ function Home() {
             you mint it 🌼
             </p>
 
-
-            <em className="mt-8 text-lg opacity-90">
-                PS: Flowers is only the first project for OCC Season 1. 
-            </em>
             <p className="mt-8">🌺👃🌺</p>
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
