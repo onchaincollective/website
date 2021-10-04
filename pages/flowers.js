@@ -1395,20 +1395,21 @@ function Home() {
                         <span>{mintFriend? 'Your friend has received the flowers ' : 'Your flowers have bloomed'}</span>
                         <br/>
                         <a
-                        href={`https://etherscan.io/tx/${transactionHash}`}
-                        target="_blank"
-                        className="font-normal text-sm cursor-pointer underline"
+                          href={`https://etherscan.io/tx/${transactionHash}`}
+                          target="_blank"
+                          className="font-normal text-sm cursor-pointer underline"
                         >View on Etherscan</a>
                     </div>
                   )}
                   {error && (
                       <div className="mt-8 text-center">
-                          <p className="text-white-500 text-xl font-normal mt-4">
+                          <p className="text-white-500 text-lg font-normal mt-4">
                               {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
                               🥀 {error.message} 🥀 
                           </p>
                           <div className={transactionHash ? "flex" : "hidden"}>
-                            <a href={error.message.transactionHash} target="_blank" className="opacity-70 underline hover:cursor-pointer"><em>view transaction</em></a>
+                            Your transaction may still go through. 
+                            <a href={transactionHash ? transactionHash : error.message.transactionHash} target="_blank" className="opacity-70 underline hover:cursor-pointer"><em>View on Etherscan</em></a>
                           </div>
                       </div>
                   )}
@@ -1485,16 +1486,21 @@ function Home() {
         </div>
         <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
             <div className="text-md ">
-            <Link href="/faqs">
-                <p className="hover:underline inline-flex cursor-pointer">faqs</p>
-            </Link>{" "}&bull;{" "}
-            <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
-                twitter
-            </a>{" "}
-            &bull;{" "}
-            <a href="https://discord.com/invite/BUCup66VKc" target="_blank" className="hover:underline">
-                discord
-            </a>{" "}
+              <Link href="/faqs">
+                  <p className="hover:underline inline-flex cursor-pointer">faqs</p>
+              </Link>
+              {" "}&bull;{" "}
+              <a href="https://opensea.io/collection/flowersonchain" target="_blank" className="hover:underline">
+                  opensea
+              </a>
+              {" "}&bull;{" "}
+              <a href="https://twitter.com/OnChainCo" target="_blank" className="hover:underline">
+                  twitter
+              </a>
+              {" "}&bull;{" "}
+              <a href="https://discord.com/invite/BUCup66VKc" target="_blank" className="hover:underline">
+                  discord
+              </a>
             </div>
         </div>
     </main>
