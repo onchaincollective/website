@@ -990,6 +990,7 @@ function Home() {
 
     
     function handleError(err) {
+        console.log('===========');
         console.error(err);
         setWorking(false);
         setLoading(false);
@@ -1010,6 +1011,7 @@ function Home() {
             .send({ from: account, value: utils.toWei(price.toString(), "ether") })
             .on("transactionHash", (txHash) => {
                 console.log(txHash);
+                setTransactionHash(res.transactionHash)
                 getTransactionReceiptMined(txHash, 1000);
             })
             .then((res) => {
@@ -1119,12 +1121,6 @@ function Home() {
                 <header className="text-5xl md:text-6xl font-snell ml-8">
                     flowers
                 </header>
-                <p className="mt-8 text-xl">4096 fully on-chain generated NFTs for you to own, or to share <br className="hidden md:block"/>
-                Minting starts from 4th Oct 17:00 UTC ⬩ 0.025 eth. <br className="hidden md:block"/>
-                Pre-sales 2hrs before public sale. Checkout <Link href="/faqs"><span className="hover:cursor-pointer underline">the faqs</span></Link> </p>
-                <p className="mt-2 text-lg mt-12">✨ Pre-sale whitelisting has ended. Click&nbsp;
-                <span className="hover:underline"><Link href="/whitelist-checker"><span className="underline hover:cursor-pointer">here</span></Link></span>&nbsp;to see if you've made it ✨</p>
-
             </div>
         </div>
         
@@ -1427,7 +1423,9 @@ function Home() {
                               {/* 🥀 Oops! Something happend. We were not able to mint your flower 🥀 */}
                               🥀 {error.message} 🥀 
                           </p>
-                          <a href={error.message.transactionHash} target="_blank" className="opacity-70 underline hover:cursor-pointer"><em>view transaction</em></a>
+                          <div className={transactionHash ? "flex" : "hidden"}>
+                            <a href={error.message.transactionHash} target="_blank" className="opacity-70 underline hover:cursor-pointer"><em>view transaction</em></a>
+                          </div>
                       </div>
                   )}
                 </div>
