@@ -98,9 +98,10 @@ export default function Home() {
             any responsibility for failed transactions or gas lost during such transactions from the contract.</em></span>
             </p>
 
-            <h1 className="text-xl mt-16 crimson-pro">Where is the opensea link?</h1>
+            <h1 className="text-xl mt-16 crimson-pro">When will I be able to see the flowers?</h1>
             <p className="mt-2 opacity-90">
-            When contract is open for sale, it'll be posted on our <Link href="/discord"><span className="inline-flex cursor-pointer hover:underline"><em>discord</em></span></Link>
+            There will be no reveals. All your flowers are listed (almost) in Opensea immediately after your transaction goes through
+            &nbsp; ➡️ &nbsp;<a href="https://opensea.io/collection/flowersonchain" target="_blank"><span className="inline-flex cursor-pointer hover:underline"><em>Opensea</em></span></a>
             </p>
 
             <h1 className="text-xl mt-16 crimson-pro">How does minting work?</h1>

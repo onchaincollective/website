@@ -1460,15 +1460,20 @@ function Home() {
             <p className="mt-2 opacity-90">
               We are florists, and this is a flower shop. Buy art you like, appreciate &amp; resonate with. But if you care, the 1 in occ#1 is there for a reason.
             </p>
-
-            <h1 className="text-xl mt-16 crimson-pro">What about the traits?</h1>
-            <p className="mt-2 opacity-90">
-            Again, ser, we've talked about this. This is a flower shop 💐 Some flowers are nice. Some are too nice. 
-            The rest, are just the right amount of nice. To keep, or to gift 🫂 Call your mom/dad/friend/lover, buy them a flower. Then explain to them what nfts are. 
-            Buuut if you really wanna know – we've put in an extensive amount of work in setting up numerous traits, 
-            with predictable amounts of rarities built into the contract 🧑‍🔬Check your flower on opensea, when minting starts. 
-            Since all flowers are randomly generated on-chain, we'll find out the precise rarities of your flower at the same time you do.
-            </p>
+            
+            <div className="flex flex-col md:flex-row items-center mt-16 ">
+              <div className="mr-0 md:mr-8 ">
+                <h1 className="text-xl crimson-pro">What about the traits?</h1>
+                <p className="mt-2 opacity-90">
+                Again, ser, we've talked about this. This is a flower shop 💐 Some flowers are nice. Some are too nice. 
+                The rest, are just the right amount of nice. To keep, or to gift 🫂 Call your mom/dad/friend/lover, buy them a flower. Then explain to them what nfts are. 
+                Buuut if you really wanna know – we've put in an extensive amount of work in setting up numerous traits, 
+                with predictable amounts of rarities built into the contract 🧑‍🔬Check your flower on opensea, when minting starts. 
+                Since all flowers are randomly generated on-chain, we'll find out the precise rarities of your flower at the same time you do.
+                </p>
+              </div>
+              <img src="/flowers/traits.png" className="w-full md:w-5/12 mt-8 md:mt-0 rounded-2xl"/>
+            </div>
 
             <h1 className="text-xl mt-16 crimson-pro">What's on-chain?</h1>
             <p className="mt-2 opacity-90">
