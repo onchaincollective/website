@@ -1108,7 +1108,8 @@ function Home() {
 
                 <p className="text-center max-w-3xl mx-auto text-xl text-left mt-2 md:p-4 p-6">
                 Fully on-chain generative NFTs for you to own, or to share 🌼 <br/>
-                All the flowers have been minted from the flower shop and delivered to their respective addresses 🌺
+                All the flowers have been minted from the flower shop and delivered to their respective addresses 🌺 
+                You can still get them if the owners decide to sell their flowers in the secondary flower shops
                 </p>
                 <a href="https://opensea.io/collection/flowersonchain" target="_blank">
                   <p className="mint-button w-40 rounded-3xl bg-white text-black px-8 py-3 cursor-pointer mt-12"><em>view on opensea</em></p>
