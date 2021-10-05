@@ -74,10 +74,10 @@ export default function Home() {
         <div className="flex flex-col max-w-4xl mx-auto text-xl text-left mt-10 md:p-4 p-6">
             <h1 className="text-xl items-left crimson-pro">When is the mint?</h1>
             <p className="mt-2 opacity-90">
-                Whitelist Presale : Completed
+                Whitelist Presale : <em>ended</em>
             </p>
             <p className="mt-2 opacity-90">
-                Public Sale : Completed
+                Public Sale : <em>ended</em>
             </p>
 
             <h1 className="text-xl mt-16 crimson-pro">Where can I mint?</h1>
@@ -92,8 +92,8 @@ export default function Home() {
 
             <h1 className="text-xl mt-16 crimson-pro">Can I mint from the etherscan contract? Where can I see it?</h1>
             <p className="mt-2 opacity-90">
-            After 50% of flowers have sold, occ#1 🌺 flowers' contract will be verified and published. You'll 
-            be able to mint directly from the contract when that happens. <br/><br/>
+            OCC#1 🌺 flowers' contract is verified and published. You'll 
+            be able to mint directly from the contract. More on how to do this are explained in our <a href="https://occ.xyz/discord" className="hover:underline" target="_blank"><em>discord</em></a> <br/><br/>
             <span className="mt-4"><em>Note: Only do this if you have experience with minting from contracts. We unfortunately can't take 
             any responsibility for failed transactions or gas lost during such transactions from the contract.</em></span>
             </p>
@@ -119,9 +119,6 @@ export default function Home() {
 
             <p className="mt-2 italic opacity-90">
                 Note: Minting for a friend count towards your own per wallet minting limits (but doesn't impact your friend's minting limits).
-            </p>
-            <p className="mt-2 italic opacity-90">
-                A detailed guide for minting for friend will be updated soon 🔜 
             </p>
             <p className="mt-2 italic opacity-90">
                 Drop by to our <Link href="/discord">discord</Link> if you have any queries
