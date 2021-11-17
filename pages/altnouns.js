@@ -2049,7 +2049,7 @@ function Home() {
                 </p>
 
                 <a
-                  href="https://nouns.wtf"
+                  href="https://mirror.xyz/onchainco.eth/HlNclqz9S0swkeFIbC72MPPVi2r9N3rs4aHiwDuAn0w"
                   target="_blank"
                   className="hover:underline mt-12 max-w-xl inline-block"
                 >
