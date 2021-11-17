@@ -1897,9 +1897,11 @@ function Home() {
                   – forever.
                 </p>
 
-                <a href="https://nouns.wtf" target="_blank" className="mt-4 block hover:underline">
-                  learn more about nouns
-                </a>
+                <div className="mt-4">
+                  <a href="https://nouns.wtf" target="_blank" className="hover:underline">
+                    learn more about nouns
+                  </a>
+                </div>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2" className="accordionItem">
@@ -2028,13 +2030,17 @@ function Home() {
                   by the contract.
                 </p>
 
-                <a href="https://occ.xyz/" className="mt-4 block hover:underline">
-                  learn more about occ
-                </a>
+                <div className="mt-4">
+                  <a href="https://occ.xyz/" className="hover:underline">
+                    learn more about occ
+                  </a>
+                </div>
 
-                <a href="https://occ.xyz/flowers" className="mt-4 block hover:underline">
-                  learn more about OCC#1 🌺 Flowers
-                </a>
+                <div className="mt-4">
+                  <a href="https://occ.xyz/flowers" className="hover:underline">
+                    learn more about OCC#1 🌺 Flowers
+                  </a>
+                </div>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
