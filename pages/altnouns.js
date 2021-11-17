@@ -1566,7 +1566,7 @@ function Home() {
                     <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
                   </div>
                 </a>
-                <a href={permalink} target="_blank" className="flex">
+                <a href={permalink} target="_blank">
                   <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
                     <div className="flex-grow flex flex-row items-center">
                       <div className="mr-2">
@@ -1591,7 +1591,7 @@ function Home() {
                       </div>
                       Noun
                     </div>
-                    <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
+                    <img src="/altnouns/open.svg" className="ml-auto w-4 flex"></img>
                   </div>
                 </a>
               </>
@@ -2044,6 +2044,30 @@ function Home() {
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="7" className="accordionItem">
+              <Accordion.Header className="accordionHeader my-10">
+                Launching Alt Nouns – The Plan™️
+              </Accordion.Header>
+              <Accordion.Body className="pb-8">
+                <p>So, what was The Plan™️?</p>
+
+                <p className="mt-8">
+                  or, how we created & dropped 80+ Alt Nouns with no gas wars,
+                  ~0 failed transactions, and no pre-sale allow list. Read on:
+                </p>
+
+                <a
+                  href="https://nouns.wtf"
+                  target="_blank"
+                  className="hover:underline mt-12 max-w-xl inline-block"
+                >
+                  <img src="/altnouns/the plan.png" className="rounded-2xl"/>
+                  <div className="mt-4">
+                  The Plan™️ on mirror.xyz/onchainco.eth
+                  </div>
+                </a>
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="8" className="accordionItem">
               <Accordion.Header className="accordionHeader my-10">
                 OCC
               </Accordion.Header>
