@@ -1260,13 +1260,6 @@ function Home() {
         // setTotalSupply(4096)
       }, handleError);
 
-    nounsContract.methods
-      .totalSupply()
-      .call()
-      .then((res) => {
-        setNounsTotalSupply(parseInt(res));
-      }, handleError);
-
     contract.methods
       .allSalesPaused()
       .call()
@@ -1524,7 +1517,7 @@ function Home() {
                       : "inline mx-1 cursor-not-allowed opacity-50"
                   }
                   onClick={() => {
-                    if (isFetching) return;
+                    if (isFetching || currentNounIndex == nounsTotalSupply) return;
                     setCurrentNounIndex(
                       currentNounIndex < nounsTotalSupply
                         ? currentNounIndex + 1
