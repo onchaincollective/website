@@ -1399,7 +1399,7 @@ function Home() {
         />
         <meta
           property="og:image"
-          content="https://www.occ.xyz/flowers/social_image.png"
+          content="https://www.occ.xyz/altnouns/altnounstwitter.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -1700,7 +1700,7 @@ function Home() {
       </div>
 
       <div className="w-full py-12 sm:py-32 text-gray-800">
-        <div className="mt-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center flower-tease px-4 mb-10">
+        <div className="mt-10 max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center px-4 mb-10">
           <div className="w-full rounded-2xl p-4">
             <h1 className="text-7xl noun-font uppercase">
               One Alt Noun, <br />{" "}
@@ -1734,7 +1734,7 @@ function Home() {
       </div>
 
       <div className="">
-        <div className="mx-auto text-center justify-center items-center flex flex-row pb-12 flower-tease">
+        <div className="mx-auto text-center justify-center items-center flex flex-row pb-12">
           <div className="w-40 rounded-2xl p-4">
             <img src="/altnouns/hAlt1.png" className="w-full rounded-2xl"></img>
           </div>
@@ -1782,7 +1782,7 @@ function Home() {
             person who mints it and blockchain’s hash at the time of minting.
           </h1>
 
-          <div className="mt-24 mx-auto text-center flex flex-col md:flex-row justify-center items-center flower-tease">
+          <div className="mt-24 mx-auto text-center flex flex-col md:flex-row justify-center items-center">
             <div className="w-full rounded-2xl p-4">
               <img
                 src="/altnouns/Alt Sample 1.png"
