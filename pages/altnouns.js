@@ -1897,7 +1897,7 @@ function Home() {
                   – forever.
                 </p>
 
-                <a href="https://nouns.wtf" target="_blank" className="mt-4">
+                <a href="https://nouns.wtf" target="_blank" className="mt-4 block hover:underline">
                   learn more about nouns
                 </a>
               </Accordion.Body>
@@ -2028,11 +2028,11 @@ function Home() {
                   by the contract.
                 </p>
 
-                <a href="https://occ.xyz/" className="mt-4">
+                <a href="https://occ.xyz/" className="mt-4 block hover:underline">
                   learn more about occ
                 </a>
 
-                <a href="https://occ.xyz/flowers" className="mt-4">
+                <a href="https://occ.xyz/flowers" className="mt-4 block hover:underline">
                   learn more about OCC#1 🌺 Flowers
                 </a>
               </Accordion.Body>
