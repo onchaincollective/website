@@ -1898,7 +1898,7 @@ function Home() {
                 </p>
 
                 <div className="mt-4">
-                  <a href="https://nouns.wtf" target="_blank" className="hover:underline">
+                  <a href="https://nouns.wtf" target="_blank" className="text-blue-600 hover:underline">
                     learn more about nouns
                   </a>
                 </div>
@@ -2031,13 +2031,13 @@ function Home() {
                 </p>
 
                 <div className="mt-4">
-                  <a href="https://occ.xyz/" className="hover:underline">
+                  <a href="https://occ.xyz/" className="text-blue-600 hover:underline">
                     learn more about occ
                   </a>
                 </div>
 
                 <div className="mt-4">
-                  <a href="https://occ.xyz/flowers" className="hover:underline">
+                  <a href="https://occ.xyz/flowers" className="text-blue-600 hover:underline">
                     learn more about OCC#1 🌺 Flowers
                   </a>
                 </div>
