@@ -2025,9 +2025,9 @@ function Home() {
                 </p>
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="5" className="accordionItem">
+            <Accordion.Item eventKey="6" className="accordionItem">
               <Accordion.Header className="accordionHeader my-10">
-                Treaury
+                Treasury
               </Accordion.Header>
               <Accordion.Body className="pb-8">
                 <p>
@@ -2043,7 +2043,7 @@ function Home() {
                 </p>
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="6" className="accordionItem">
+            <Accordion.Item eventKey="7" className="accordionItem">
               <Accordion.Header className="accordionHeader my-10">
                 OCC
               </Accordion.Header>
