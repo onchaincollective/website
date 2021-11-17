@@ -1163,7 +1163,7 @@ function Home() {
     if (!currentNounIndex) return;
 
     setMintButtonText(
-      "Mint Alt Noun " + currentNounIndex + " (" + mintPrice + " eth)"
+      "Mint Alt Noun #" + currentNounIndex + " (" + mintPrice + " eth)"
     );
 
     setError(null);
@@ -1288,25 +1288,16 @@ function Home() {
 
   useEffect(() => {
     setMintButtonText(
-      "Mint Alt Noun " + currentNounIndex + " (" + mintPrice + " eth)"
+      "Mint Alt Noun #" + currentNounIndex + " (" + mintPrice + " eth)"
     );
 
     if (salesPaused) {
       setMintButtonText("Minting is paused right now");
       setMintDisabled(salesPaused);
     } else {
-
-      setMintDisabled(
-        working
-      );
-
+      setMintDisabled(working);
     }
-
-  }, [
-    working,
-    totalSupply,
-    salesPaused,
-  ]);
+  }, [working, totalSupply, salesPaused]);
 
   function handleError(err) {
     console.log("===========");
@@ -1420,7 +1411,10 @@ function Home() {
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.occ.xyz/altnouns" />
-        <meta property="twitter:title" content="Alt Nouns • An OCC Experiment" />
+        <meta
+          property="twitter:title"
+          content="Alt Nouns • An OCC Experiment"
+        />
         <meta
           property="twitter:description"
           content="Alt Nouns – an infinite derivative of Nouns."
@@ -1508,8 +1502,8 @@ function Home() {
             className="alt-noun-hero"
           ></img>
           <div className="flex-grow mt-12 sm:mt-0">
-            <p className="mt-10">Date</p>
-            <div className="text-5xl sm:max-w-md flex flex-row">
+            {/* <p className="mt-10">Date</p> */}
+            <div className="text-5xl sm:max-w-md flex flex-row mt-10">
               <div className="flex-grow"> Alt Noun {currentNounIndex}</div>
               <div className="inline ml-8">
                 <div
@@ -1558,47 +1552,48 @@ function Home() {
                   )}
                 </h1>
                 <p className="mt-8">Links</p>
-                <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2">
-                  <div className="flex-grow flex flex-row items-center">
-                    <div className="mr-2">
-                      <Davatar size={24} address={winnerAddress} />
+                <a
+                  href={"https://etherscan.io/tx/" + mintTransactionHash}
+                  target="_blank"
+                >
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                    <div className="flex-grow flex flex-row items-center">
+                      <div className="mr-2">
+                        <Davatar size={24} address={winnerAddress} />
+                      </div>
+                      Winning Transaction
                     </div>
-                    Winning Transaction
-                  </div>
-                  <a
-                    href={"https://etherscan.io/tx/" + mintTransactionHash}
-                    target="_blank"
-                    className="flex"
-                  >
                     <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
-                  </a>
-                </div>
-                <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2">
-                  <div className="flex-grow flex flex-row items-center">
-                    <div className="mr-2">
-                      <img src="/altnouns/OS Logo.svg" />
+                  </div>
+                </a>
+                <a href={permalink} target="_blank" className="flex">
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                    <div className="flex-grow flex flex-row items-center">
+                      <div className="mr-2">
+                        <img src="/altnouns/OS Logo.svg" />
+                      </div>
+                      OpenSea
                     </div>
-                    OpenSea
+                    <img
+                      src="/altnouns/open.svg"
+                      className="ml-auto w-4 flex"
+                    ></img>
                   </div>
-                  <a href={permalink} target="_blank" className="flex">
-                    <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
-                  </a>
-                </div>
-                <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2">
-                  <div className="flex-grow flex flex-row items-center">
-                    <div className="mr-2">
-                      <img src="/altnouns/nouns logo.svg" />
+                </a>
+                <a
+                  href={"https://nouns.wtf/auction/" + currentNounIndex}
+                  target="_blank"
+                >
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                    <div className="flex-grow flex flex-row items-center">
+                      <div className="mr-2">
+                        <img src="/altnouns/nouns logo.svg" />
+                      </div>
+                      Noun
                     </div>
-                    Noun
-                  </div>
-                  <a
-                    href={"https://nouns.wtf/auction/" + currentNounIndex}
-                    target="_blank"
-                    className="flex"
-                  >
                     <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
-                  </a>
-                </div>
+                  </div>
+                </a>
               </>
             ) : (
               <>
@@ -1688,21 +1683,23 @@ function Home() {
                   </div>
                 )}
                 <p className="mt-8">Links</p>
-                <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2">
-                  <div className="flex-grow flex flex-row items-center">
-                    <div className="mr-2">
-                      <img src="/altnouns/nouns logo.svg" />
+                <a
+                  href={"https://nouns.wtf/auction/" + currentNounIndex}
+                  target="_blank"
+                >
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                    <div className="flex-grow flex flex-row items-center">
+                      <div className="mr-2">
+                        <img src="/altnouns/nouns logo.svg" />
+                      </div>
+                      Noun
                     </div>
-                    Noun
+                    <img
+                      src="/altnouns/open.svg"
+                      className="ml-auto w-4 flex"
+                    ></img>
                   </div>
-                  <a
-                    href={"https://nouns.wtf/auction/" + currentNounIndex}
-                    target="_blank"
-                    className="flex"
-                  >
-                    <img src="/altnouns/open.svg" className="ml-auto w-4"></img>
-                  </a>
-                </div>
+                </a>
               </>
             )}
           </div>
@@ -1719,7 +1716,27 @@ function Home() {
               </span>
             </h1>
           </div>
-          <blockquote className="twitter-tweet"><p lang="en" dir="ltr">behold, an infinite (derivative) work of art<br/><br/>Alt Nouns – A fully on-chain, infinite derivative of <a href="https://twitter.com/nounsdao?ref_src=twsrc%5Etfw">@nounsdao</a> <a href="https://t.co/2J2i9tOmOI">pic.twitter.com/2J2i9tOmOI</a></p>&mdash; on chain collective (@onChainCo) <a href="https://twitter.com/onChainCo/status/1454538053540843521?ref_src=twsrc%5Etfw">October 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+          <blockquote className="twitter-tweet">
+            <p lang="en" dir="ltr">
+              behold, an infinite (derivative) work of art
+              <br />
+              <br />
+              Alt Nouns – A fully on-chain, infinite derivative of{" "}
+              <a href="https://twitter.com/nounsdao?ref_src=twsrc%5Etfw">
+                @nounsdao
+              </a>{" "}
+              <a href="https://t.co/2J2i9tOmOI">pic.twitter.com/2J2i9tOmOI</a>
+            </p>
+            &mdash; on chain collective (@onChainCo){" "}
+            <a href="https://twitter.com/onChainCo/status/1454538053540843521?ref_src=twsrc%5Etfw">
+              October 30, 2021
+            </a>
+          </blockquote>{" "}
+          <script
+            async
+            src="https://platform.twitter.com/widgets.js"
+            charSet="utf-8"
+          ></script>
         </div>
       </div>
 
@@ -1794,7 +1811,6 @@ function Home() {
           </div>
         </div>
         <div className="flex align-center flex-col max-w-5xl mx-auto text-xl text-left p-6 mt-24">
-
           <h1 className="text-7xl noun-font">Ummm... WTF?</h1>
           <p className="mx-auto text-xl mt-12 ">
             Alt nouns is much more than just a derivative. It’s a grand
@@ -1898,7 +1914,11 @@ function Home() {
                 </p>
 
                 <div className="mt-4">
-                  <a href="https://nouns.wtf" target="_blank" className="text-blue-600 hover:underline">
+                  <a
+                    href="https://nouns.wtf"
+                    target="_blank"
+                    className="text-blue-600 hover:underline"
+                  >
                     learn more about nouns
                   </a>
                 </div>
@@ -2005,6 +2025,24 @@ function Home() {
                 </p>
               </Accordion.Body>
             </Accordion.Item>
+            <Accordion.Item eventKey="5" className="accordionItem">
+              <Accordion.Header className="accordionHeader my-10">
+                Treaury
+              </Accordion.Header>
+              <Accordion.Body className="pb-8">
+                <p>
+                  A portion of the primary and secondary sales for Alt Nouns
+                  will be going into the Alt Nouns treasury. The goals for this
+                  treasury are being planned by the OCC community on our discord
+                  right now – come join us! It'll be used for proliferation of
+                  Nouns, of on-chain art and more.
+                </p>
+
+                <p className="mt-4">
+                  <em>Details TBD</em>
+                </p>
+              </Accordion.Body>
+            </Accordion.Item>
             <Accordion.Item eventKey="6" className="accordionItem">
               <Accordion.Header className="accordionHeader my-10">
                 OCC
@@ -2031,13 +2069,19 @@ function Home() {
                 </p>
 
                 <div className="mt-4">
-                  <a href="https://occ.xyz/" className="text-blue-600 hover:underline">
+                  <a
+                    href="https://occ.xyz/"
+                    className="text-blue-600 hover:underline"
+                  >
                     learn more about occ
                   </a>
                 </div>
 
                 <div className="mt-4">
-                  <a href="https://occ.xyz/flowers" className="text-blue-600 hover:underline">
+                  <a
+                    href="https://occ.xyz/flowers"
+                    className="text-blue-600 hover:underline"
+                  >
                     learn more about OCC#1 🌺 Flowers
                   </a>
                 </div>
@@ -2050,6 +2094,14 @@ function Home() {
       </div>
       <div className="flex align-center flex-col max-w-2xl mx-auto text-center mt-10 mb-12 p-4">
         <div className="text-md ">
+          <a
+            href="https://nouns.wtf"
+            target="_blank"
+            className="hover:underline"
+          >
+            nouns
+          </a>{" "}
+          &bull;{" "}
           <a
             href="https://etherscan.io/address/0x971a6ff4f5792f3e0288f093340fb36a826aae96"
             target="_blank"
