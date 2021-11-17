@@ -4,6 +4,14 @@
   font-family: "snell";
   src: url(/flowers/SnellBTRegular.otf);
 }
+@font-face {
+  font-family: "04b03";
+  src: url(/altnouns/04B_03__.ttf);
+}
+@font-face {
+  font-family: "Londrina Solid";
+  src: url(/altnouns/LondrinaSolid-Black.ttf);
+}
 
 @layer components {
   .btn {
@@ -87,14 +95,6 @@ p {
 }
 .font-snell {
   @apply snell;
-}
-@media screen and (max-width: 480px) {
-  .flower {
-    display: flex;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
-  }
 }
 .flower-tease svg{
   width: 100%;
@@ -212,3 +212,129 @@ li:nth-child(4) > .quotes {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
 } */
+
+.altnouns * {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
+.altnouns {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.bg-noun-gray {
+  background-color: #1F1D29;
+}
+.tracking-wide-xl {
+  letter-spacing: 0.25rem;
+}
+
+.noun-font {
+  font-family: "Londrina Solid";
+}
+
+.pixel-font {
+  font-family: "04b03";
+}
+
+.accordionItem {
+  margin-bottom: 2.5rem;
+  border: none;
+}
+
+.accordionItem,
+.headerWrapper {
+  font-size: 1.3rem;
+}
+
+.accordionHeader button:hover {
+  color: #E8705B;
+}
+
+.accordionHeader button {
+  border: none;
+  background-color: transparent;
+  font-family: 'Londrina Solid';
+  font-size: 2.5rem !important;
+  width: 100%;
+  cursor: pointer;
+  line-height: normal;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.accordion-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0;
+  overflow-anchor: none;
+  transition: color .15s ease-out,background-color .15s ease,border-color .15s ease,box-shadow .15s ease,border-radius .15s ease;
+}
+.accordionHeader button:not(.collapsed) {
+  color: #E8705B;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+/* override bootstrap color */
+.accordionHeader-button {
+  display: flex;
+  width: 100%;
+}
+.accordion-button:after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform .2s ease-in-out;
+}
+.accordion-button:not(.collapsed):after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+  transform: rotate(-180deg);
+}
+.accordionHeader button:focus {
+  color: #E8705B !important;
+  box-shadow: none !important;
+}
+.collapse {
+  transition: height .35s ease;
+}
+.collapse:not(.show) {
+  display: none;
+}
+.alt-noun-hero {
+  width: 460px;
+  height: 460px;
+  border-radius: 3rem;
+}
+
+.altnouns .mint-button:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+@media screen and (max-width: 480px) {
+  .flower {
+    display: flex;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+  }
+  .alt-noun-hero {
+    display: flex;
+    width: auto;
+    height: auto;
+    border-radius: 3rem;
+  }
+}

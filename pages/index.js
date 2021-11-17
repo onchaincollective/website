@@ -5,6 +5,7 @@ import Link from 'next/link'
 export default function Home() {
   useEffect( () => { 
     document.querySelector("body").classList.remove("flowers"); 
+    document.querySelector("body").classList.remove("altnouns"); 
     document.querySelector("body").classList.add("home");
   } );
   return (
@@ -72,6 +73,36 @@ export default function Home() {
           </p>
           <Link href="/flowers">
             <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12"><em>mint flowers</em></div>
+          </Link>
+        </div>
+        <div className="mt-32 text-center flex flex-col justify-center items-center">
+          <img src="/occ/altnouns.png" className="w-full" />
+          <p className="text-sm mt-8">occ experiments</p>
+          <h1 className="text-3xl md:text-4xl mt-1 oc-color noun-font">
+            ALT NOUNS
+          </h1>
+          <p className="text-xl mt-4 font-normal">
+            Behold - An infinite (derivative) work of art.&nbsp;<br className="hidden md:block"/>
+            One Alt Noun, every day, forever
+          </p>
+          <Link href="/altnouns">
+            <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12 pixel-font">MINT ALT NOUNS</div>
+          </Link>
+        </div>
+        <div className="mt-20 opacity-50">
+          ~
+        </div>
+        <div className="mt-16 text-center flex flex-col justify-center items-center">
+          <p className="text-sm mt-8">occ tools</p>
+          <h1 className="text-3xl md:text-4xl mt-1 oc-color font-normal">
+            remix
+          </h1>
+          <p className="text-xl mt-4 font-normal">
+            Flaunt your flowers by remixing with jpegs you own.&nbsp;<br className="hidden md:block"/>
+            Crypto-authenticated 🌼
+          </p>
+          <Link href="https://remix.occ.xyz/">
+            <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12"><em>remix flowers</em></div>
           </Link>
         </div>
         <div className="text-md mt-24">

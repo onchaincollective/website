@@ -1,0 +1,15 @@
+<svg width="66" height="85" viewBox="0 0 167 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#distort)">
+<path d="M28.2256 52.3599V0H82.7946V25.9483H55.0397V52.3599H28.2256Z" fill="#E8705B"/>
+<path d="M28.2256 215V162.64H82.7946V188.588H55.0397V215H28.2256Z" fill="#E8705B"/>
+<path d="M137.363 2.309e-06V52.3598H82.7943V26.4116H110.549V0L137.363 2.309e-06Z" fill="#E8705B"/>
+<path d="M137.363 162.64V215H82.7943V189.052H110.549V162.64H137.363Z" fill="#E8705B"/>
+<path d="M110.549 81.5518H82.7944V134.375H167V81.5518H138.304V107.963H110.549V81.5518Z" fill="#E8705B"/>
+<path d="M55.5099 80.1616H0V134.838H55.5099V80.1616Z" fill="#E8705B"/>
+</g>
+<defs>
+<filter id="distort" x="-50%" y="-50%" width="200%" height="200%">
+<feTurbulence baseFrequency="0.01 0.01" type="fractalNoise" numOctaves="5" seed="12453"><animate attributeName="seed" begin="0s" dur="16s" values="1;20;160" repeatCount="indefinite" /></feTurbulence><feDisplacementMap in="SourceGraphic" scale="300"><animate attributeName="scale" begin="0s" dur="16s" values="1;200;1000;1;1" repeatCount="indefinite" /></feDisplacementMap>
+</filter>
+</defs>
+</svg>
