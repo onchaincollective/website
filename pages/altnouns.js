@@ -1495,14 +1495,13 @@ function Home() {
           </header>
         </div>
 
-        <div className="my-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-center px-4">
+        <div className="my-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-center px-4 space-x-0 sm:space-x-4 lg:space-x-32">
           <img
             src={!isFetching ? sampleNoun : "/altnouns/loading-skull-noun.gif"}
             className={
               currentNounIndex ? "alt-noun-hero" : "alt-noun-hero opacity-0"
             }
           ></img>
-          <div className="flex-auto"></div>
           <div
             className={
               currentNounIndex
@@ -1514,7 +1513,13 @@ function Home() {
               {totalSupply} / {nounsTotalSupply} claimed
             </p>
             <div className="text-5xl sm:max-w-md flex flex-row mt-2">
-              <div className="flex-grow"> Alt Noun {currentNounIndex}</div>
+              <div className="flex-grow">
+                {" "}
+                <span className={altNounExists ? "" : "opacity-50"}>
+                  Alt
+                </span>{" "}
+                Noun {currentNounIndex}
+              </div>
               <div className="inline ml-8">
                 <div
                   className="inline mx-1 cursor-pointer"
@@ -1567,7 +1572,7 @@ function Home() {
                   href={"https://etherscan.io/tx/" + mintTransactionHash}
                   target="_blank"
                 >
-                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">
                     <div className="flex-grow flex flex-row items-center">
                       <div className="mr-2">
                         <Davatar size={24} address={winnerAddress} />
@@ -1578,7 +1583,7 @@ function Home() {
                   </div>
                 </a>
                 <a href={permalink} target="_blank">
-                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">
                     <div className="flex-grow flex flex-row items-center">
                       <div className="mr-2">
                         <img src="/altnouns/OS Logo.svg" />
@@ -1595,7 +1600,7 @@ function Home() {
                   href={"https://nouns.wtf/auction/" + currentNounIndex}
                   target="_blank"
                 >
-                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">
                     <div className="flex-grow flex flex-row items-center">
                       <div className="mr-2">
                         <img src="/altnouns/nouns logo.svg" />
@@ -1689,7 +1694,7 @@ function Home() {
                   )}
                 </div>
                 {currentNounIndex % 10 == 0 && (
-                  <div className="text-sm mt-8 py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2">
+                  <div className="text-sm mt-8 py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2">
                     Every 10th Alt Noun is reserved for members of the NounsDAO,
                     i.e. Noun Holders. We (On Chain Collective), did this as a
                     token of appreciation for Nounders, developers, artists and
@@ -1701,7 +1706,7 @@ function Home() {
                   href={"https://nouns.wtf/auction/" + currentNounIndex}
                   target="_blank"
                 >
-                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-lg my-2 hover:opacity-80">
+                  <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">
                     <div className="flex-grow flex flex-row items-center">
                       <div className="mr-2">
                         <img src="/altnouns/nouns logo.svg" />
