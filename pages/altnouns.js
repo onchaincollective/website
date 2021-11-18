@@ -1889,9 +1889,9 @@ function Home() {
                     2 max per wallet, locked (to allow everyone a chance to get
                     one)
                   </li>
-                  <li>no auctions, fixed price of 0.15ETH</li>
+                  <li>0.15ETH per Alt Noun</li>
                   <li>
-                    dynamic price <i>(details soon)</i>
+                    dynamic price, deflation, charity, burning, community treasury <i>and much more</i>
                   </li>
                 </ul>
               </Accordion.Body>
@@ -2024,7 +2024,7 @@ function Home() {
                 <p className="mt-4">
                   As a result of this distribution mechanic, which Alt Noun is
                   contractually obligated to adhere to – It’ll take a little
-                  over 27 years for the 10,000th Alt Noun to be born :)
+                  over 27 years for the 10,000th Alt Noun to be born.
                 </p>
               </Accordion.Body>
             </Accordion.Item>
