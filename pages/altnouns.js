@@ -1156,6 +1156,13 @@ function Home() {
         setCurrentNounIndex(parseInt(res) - 1);
         setNounsTotalSupply(parseInt(res) - 1);
       }, handleError);
+
+    altNounsContract.methods
+      .totalSupply()
+      .call()
+      .then((res) => {
+        setTotalSupply(parseInt(res) - 1);
+      }, handleError);
   }, []);
 
   // checks if noun exists
@@ -1170,7 +1177,10 @@ function Home() {
 
     const options = {
       method: "GET",
-      headers: { Accept: "application/json",'X-API-KEY': '3ae9e8c3816a43c4add31069b1a673f9' },
+      headers: {
+        Accept: "application/json",
+        "X-API-KEY": "3ae9e8c3816a43c4add31069b1a673f9",
+      },
     };
     fetch(
       "https://api.opensea.io/api/v1/events?asset_contract_address=0x971a6ff4f5792f3e0288f093340fb36a826aae96&collection_slug=altnouns&token_id=" +
@@ -1239,7 +1249,6 @@ function Home() {
     if (!library) return;
     console.log("Fetching details for account: ", account);
     const contract = new library.eth.Contract(abi, contractAddress);
-    const nounsContract = new library.eth.Contract(abi, nounsContractAddress);
 
     setContract(contract);
 
@@ -1439,7 +1448,7 @@ function Home() {
         />
       </Head>
 
-      <div className="bg-black text-white pb-20">
+      <div className="bg-black text-white pb-20 py-10">
         <div className="flex align-center flex-col max-w-6xl mx-auto text-xl text-left p-4">
           {/* <Link href="/">
                     <p className="text-sm mt-4 opacity-50 cursor-pointer">occ experiments</p>
@@ -1492,11 +1501,21 @@ function Home() {
         <div className="my-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-center space-x-0 sm:space-x-4 lg:space-x-32 px-4">
           <img
             src={!isFetching ? sampleNoun : "/altnouns/loading-skull-noun.gif"}
-            className="alt-noun-hero"
+            className={
+              currentNounIndex ? "alt-noun-hero" : "alt-noun-hero opacity-0"
+            }
           ></img>
-          <div className="flex-grow mt-12 sm:mt-0">
-            {/* <p className="mt-10">Date</p> */}
-            <div className="text-5xl sm:max-w-md flex flex-row mt-10">
+          <div
+            className={
+              currentNounIndex
+                ? "flex-grow mt-12 sm:mt-0"
+                : "flex-grow mt-12 sm:mt-0 hidden"
+            }
+          >
+            <p className="mt-10">
+              {totalSupply} / {nounsTotalSupply} claimed
+            </p>
+            <div className="text-5xl sm:max-w-md flex flex-row mt-2">
               <div className="flex-grow"> Alt Noun {currentNounIndex}</div>
               <div className="inline ml-8">
                 <div
@@ -1517,7 +1536,8 @@ function Home() {
                       : "inline mx-1 cursor-not-allowed opacity-50"
                   }
                   onClick={() => {
-                    if (isFetching || currentNounIndex == nounsTotalSupply) return;
+                    if (isFetching || currentNounIndex == nounsTotalSupply)
+                      return;
                     setCurrentNounIndex(
                       currentNounIndex < nounsTotalSupply
                         ? currentNounIndex + 1
@@ -1531,7 +1551,7 @@ function Home() {
             </div>
             {altNounExists && currentNounIndex && winnerAddress ? (
               <>
-                <p className="mt-8">Winner</p>
+                <p className="mt-8">Claimed by</p>
                 <h1 className="text-5xl flex items-center mt-2">
                   {!isFetching ? (
                     <>
@@ -1584,7 +1604,10 @@ function Home() {
                       </div>
                       Noun
                     </div>
-                    <img src="/altnouns/open.svg" className="ml-auto w-4 flex"></img>
+                    <img
+                      src="/altnouns/open.svg"
+                      className="ml-auto w-4 flex"
+                    ></img>
                   </div>
                 </a>
               </>
@@ -1593,7 +1616,7 @@ function Home() {
                 {!isFetching ? (
                   <>
                     <p className="mt-8">
-                      Now available
+                      Available
                       {currentNounIndex % 10 == 0 &&
                         " for members of the NounsDAO"}
                     </p>
@@ -1777,9 +1800,9 @@ function Home() {
           <h1 className="text-2xl sm:text-5xl noun-font uppercase text-center mt-4 sm:mt-10 md:mt-24 leading-tight">
             Each Alt Noun is created by communicating with the Nouns contract,
             asking it for a Noun and altering it, fully on-chain. Some alts are
-            static, some animated. Some are pfps, and others are abstract art
-            pieces. but Each one is unique – to the noun its based on, the
-            person who mints it and blockchain’s hash at the time of minting.
+            static, some are infinitely animated. Some provide identity, and
+            others are abstract art pieces. but Each one is unique – to the noun
+            its based on, the person who mints it and blockchain’s hash.
           </h1>
 
           <div className="mt-24 mx-auto text-center flex flex-col md:flex-row justify-center items-center">
@@ -1977,6 +2000,11 @@ function Home() {
                   over this time period, so we'll all find out how much
                   something is 'worth', together.{" "}
                 </p>
+                <p className="mt-4">
+                  {" "}
+                  Some alterations, however, are very special – infinite &amp;
+                  dynamic in more ways than one 👀{" "}
+                </p>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="4" className="accordionItem">
@@ -2053,9 +2081,9 @@ function Home() {
                   target="_blank"
                   className="hover:underline mt-12 max-w-xl inline-block"
                 >
-                  <img src="/altnouns/the plan.png" className="rounded-2xl"/>
+                  <img src="/altnouns/the plan.png" className="rounded-2xl" />
                   <div className="mt-4">
-                  The Plan™️ on mirror.xyz/onchainco.eth
+                    The Plan™️ on mirror.xyz/onchainco.eth
                   </div>
                 </a>
               </Accordion.Body>
