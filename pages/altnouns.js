@@ -1265,7 +1265,7 @@ function Home() {
       .totalSupply()
       .call()
       .then((res) => {
-        setTotalSupply(parseInt(res));
+        setTotalSupply(parseInt(res) - 1);
         // setTotalSupply(4096)
       }, handleError);
 
