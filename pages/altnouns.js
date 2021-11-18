@@ -1170,7 +1170,7 @@ function Home() {
 
     const options = {
       method: "GET",
-      headers: { Accept: "application/json" },
+      headers: { Accept: "application/json",'X-API-KEY': '3ae9e8c3816a43c4add31069b1a673f9' },
     };
     fetch(
       "https://api.opensea.io/api/v1/events?asset_contract_address=0x971a6ff4f5792f3e0288f093340fb36a826aae96&collection_slug=altnouns&token_id=" +
