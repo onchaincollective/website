@@ -1450,9 +1450,6 @@ function Home() {
 
       <div className="bg-black text-white pb-20 py-10">
         <div className="flex align-center flex-col max-w-6xl mx-auto text-xl text-left p-4">
-          {/* <Link href="/">
-                    <p className="text-sm mt-4 opacity-50 cursor-pointer">occ experiments</p>
-                </Link> */}
           <header className="flex pt-2 justify-end">
             <div className="flex-grow">
               <object
@@ -1488,7 +1485,7 @@ function Home() {
               )}
               {active && (
                 <div
-                  className="pixel-font mx-4 flex-auto py-2 -mt-0.5 px-4 bg-noun-gray rounded-xl tracking-wide-xl"
+                  className="pixel-font mx-4 flex-auto py-2 -mt-0.5 px-4 bg-noun-gray rounded-xl tracking-wide-xl mr-0"
                   onClick={showConnectButtons}
                 >
                   <span className="text-green-500">●</span> CONNECTED
@@ -1498,13 +1495,14 @@ function Home() {
           </header>
         </div>
 
-        <div className="my-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-center space-x-0 sm:space-x-4 lg:space-x-32 px-4">
+        <div className="my-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-center px-4">
           <img
             src={!isFetching ? sampleNoun : "/altnouns/loading-skull-noun.gif"}
             className={
               currentNounIndex ? "alt-noun-hero" : "alt-noun-hero opacity-0"
             }
           ></img>
+          <div className="flex-auto"></div>
           <div
             className={
               currentNounIndex
