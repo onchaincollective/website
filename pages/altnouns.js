@@ -1734,6 +1734,13 @@ function Home() {
                 every day, <br /> forever.
               </span>
             </h1>
+            <a
+              href="https://opensea.io/collection/altnouns"
+              target="_blank"
+              className="hover:underline text-xl noun-font text-blue-500 uppercase mt-8 flex"
+            >
+              view on opensea →
+            </a>
           </div>
           <blockquote className="twitter-tweet">
             <p lang="en" dir="ltr">
@@ -1797,8 +1804,8 @@ function Home() {
             behold - an infinite derivative work of art
           </h1>
           <h1 className="text-4xl sm:text-8xl noun-font uppercase text-center mt-4 sm:mt-10 md:mt-24">
-            Every day, at the very moment that a new noun is born – its alt noun
-            becomes available to mint, forever.
+            Every day, at the very moment that a new noun is born – its 1/1 alt
+            noun can be claimed.
           </h1>
           <h1 className="text-2xl sm:text-5xl noun-font uppercase text-center mt-4 sm:mt-10 md:mt-24 leading-tight">
             Each Alt Noun is created by communicating with the Nouns contract,
@@ -1808,42 +1815,95 @@ function Home() {
             its based on, the person who mints it and blockchain’s hash.
           </h1>
 
-          <div className="mt-24 mx-auto text-center flex flex-col md:flex-row justify-center items-center">
+          <div className="mt-24 w-max-7xl text-center flex flex-col md:flex-row justify-center items-center">
             <div className="w-full rounded-2xl p-4">
-              <img
-                src="/altnouns/Alt Sample 1.png"
+              <object
+                data="/altnouns/as1.svg"
                 className="w-full rounded-2xl"
-              ></img>
+              ></object>
             </div>
             <div className="w-full rounded-2xl p-4">
-              <img
-                src="/altnouns/Alt Sample 2.png"
+              <object
+                data="/altnouns/as2.svg"
                 className="w-full rounded-2xl"
-              ></img>
+              ></object>
             </div>
             <div className="w-full rounded-2xl p-4">
-              <img
-                src="/altnouns/Alt Sample 3.png"
+              <object
+                data="/altnouns/as3.svg"
                 className="w-full rounded-2xl"
-              ></img>
+              ></object>
+            </div>
+          </div>
+          <div className="mt-4 w-max-7xl text-center flex flex-col md:flex-row justify-center items-center">
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as4.svg"
+                className="w-full rounded-2xl"
+              ></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as5.svg"
+                className="w-full rounded-2xl"
+              ></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as6.svg"
+                className="w-full rounded-2xl"
+              ></object>
+            </div>
+          </div>
+          <div className="mt-4 w-max-7xl text-center flex flex-col md:flex-row justify-center items-center">
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as7.svg"
+                className="w-full rounded-2xl"
+              ></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as8.svg"
+                className="w-full rounded-2xl"
+              ></object>
+            </div>
+            <div className="w-full rounded-2xl p-4">
+              <object
+                data="/altnouns/as9.svg"
+                className="w-full rounded-2xl"
+              ></object>
             </div>
           </div>
         </div>
         <div className="flex align-center flex-col max-w-5xl mx-auto text-xl text-left p-6 mt-24">
           <h1 className="text-7xl noun-font">Ummm... WTF?</h1>
           <p className="mx-auto text-xl mt-12 ">
-            Alt nouns is much more than just a derivative. It’s a grand
-            experiment within a much grander experiment – in on-chain art,
-            blockchain interoperation, public domain possibilities, derived
-            value, sub-communities, noun proliferation, distribution mechanics
-            and much more. It’s the first fully on-chain contract interoperative
-            derivative of Nouns that directly interacts with the Nouns contract
-            to create 1/1 art from this conversation. Every day, created &
-            stored on-chain, forever.
+            Alt Nouns are a grand and infinite experiment within a much grander
+            experiment – in on-chain art, blockchain interoperation, public
+            domain possibilities, derived value, sub-communities, noun
+            proliferation, distribution mechanics and much more. Each Alt Noun
+            represents deeper questions about art, and digital provenance and
+            seeks to push the boundaries for Nouns and the nouneverse.
+            <br />
+            <br />
+            Since Nouns are vastly out of reach for most people now, and
+            possibly even more so in the future – Alt Nouns also allows for
+            people to participate in the historical significance of Nouns – in a
+            completely autonomous and true to the original Nouns' on-chain
+            ethos. Each one is based on the very Noun they're created from, in
+            the truest sense of the word.
+            <br />
+            <br />
+            It’s the first fully on-chain contract interoperative derivative of
+            Nouns that directly interacts with the Nouns contract to create 1/1
+            art from this conversation. Every day, created & stored on-chain,
+            forever.
             <br />
             <br />
             No ipfs/arweave, no rendering scripts. Just 2 smart contracts,
-            forever talking to each other.
+            forever talking to each other – siblings on the blockchain; creating
+            art together.
           </p>
 
           {/* <h1 className="text-5xl mt-32 noun-font">Seriously though, what?</h1>
@@ -1891,7 +1951,8 @@ function Home() {
                   </li>
                   <li>0.15ETH per Alt Noun</li>
                   <li>
-                    dynamic price, deflation, charity, burning, community treasury <i>and much more</i>
+                    dynamic price, deflation, charity, burning, community
+                    treasury <i>and much more</i>
                   </li>
                 </ul>
               </Accordion.Body>
