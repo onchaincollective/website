@@ -1510,7 +1510,7 @@ function Home() {
             }
           >
             <p className="mt-10">
-              {totalSupply} / {nounsTotalSupply} claimed
+              {totalSupply + 1} / {nounsTotalSupply + 1} claimed
             </p>
             <div className="text-5xl sm:max-w-md flex flex-row mt-2">
               <div className="flex-grow">
