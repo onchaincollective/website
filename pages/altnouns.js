@@ -1597,7 +1597,7 @@ function Home() {
                   </div>
                 </a>
                 <a
-                  href={"https://nouns.wtf/auction/" + currentNounIndex}
+                  href={"https://nouns.wtf/noun/" + currentNounIndex}
                   target="_blank"
                 >
                   <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">
@@ -1703,7 +1703,7 @@ function Home() {
                 )}
                 <p className="mt-8">Links</p>
                 <a
-                  href={"https://nouns.wtf/auction/" + currentNounIndex}
+                  href={"https://nouns.wtf/noun/" + currentNounIndex}
                   target="_blank"
                 >
                   <div className="text-base py-2.5 px-4 bg-noun-gray rounded-lg flex sm:max-w-xl my-2 hover:opacity-80">

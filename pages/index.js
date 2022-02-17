@@ -72,7 +72,7 @@ export default function Home() {
             For you, or a special someone in your life 🌼
           </p>
           <Link href="/flowers">
-            <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12"><em>mint flowers</em></div>
+            <div className="button rounded-3xl bg-white px-8 py-3 cursor-pointer mt-12"><em>view collection</em></div>
           </Link>
         </div>
         <div className="mt-32 text-center flex flex-col justify-center items-center">
